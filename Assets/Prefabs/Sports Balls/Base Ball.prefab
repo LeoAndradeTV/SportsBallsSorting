@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4395197071090715514}
   - component: {fileID: 6247893916318198103}
   - component: {fileID: 5750794168858465931}
+  - component: {fileID: 4078902476898363891}
   m_Layer: 0
   m_Name: Base Ball
   m_TagString: Untagged
@@ -133,3 +134,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4078902476898363891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526104042839274661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a84f21593807fa4f899af51348021b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ballData: {fileID: 0}

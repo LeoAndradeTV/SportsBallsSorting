@@ -10,21 +10,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -73,15 +58,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
+    - target: {fileID: 4078902476898363891, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: _ballData
+      value: 
+      objectReference: {fileID: 11400000, guid: 28ea6e78419ae07469f56ae5b46956ab,
+        type: 2}
     - target: {fileID: 8526104042839274661, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_Name
-      value: Bowlin Ball
+      value: Pickle Ball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

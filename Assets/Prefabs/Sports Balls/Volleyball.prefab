@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.8000001
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8000001
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.8000001
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
@@ -78,10 +78,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4078902476898363891, guid: 86ba0459827e8b04abf8a72289935ec2,
+        type: 3}
+      propertyPath: _ballData
+      value: 
+      objectReference: {fileID: 11400000, guid: b01469ce7e3f3df4e9e5279846de110c,
+        type: 2}
     - target: {fileID: 8526104042839274661, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_Name
-      value: Volleyball 1
+      value: Volleyball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
