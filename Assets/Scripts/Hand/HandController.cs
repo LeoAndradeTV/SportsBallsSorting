@@ -53,7 +53,13 @@ public class HandController : MonoBehaviour
 
     private void SetLineRenderer()
     {
+        Vector3 secondLinePosition = new Vector3(transform.position.x, 0, transform.position.z);
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit info, 1000f))
+        {
+            secondLinePosition = info.point;
+        }
+
         lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, new Vector3(transform.position.x, 0, transform.position.z));
+        lineRenderer.SetPosition(1, secondLinePosition);
     }
 }
