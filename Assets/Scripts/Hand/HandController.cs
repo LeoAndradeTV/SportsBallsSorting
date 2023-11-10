@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 
 [RequireComponent(typeof(LineRenderer))]
 public class HandController : MonoBehaviour
 {
     [SerializeField] private float handMoveSpeed;
+
+    private Transform cameraTransform;
 
     private float currentPositionX;
     private float currentPositionZ;
@@ -24,6 +27,7 @@ public class HandController : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
+        cameraTransform = Camera.main.transform;
     }
 
     // Update is called once per frame
@@ -42,13 +46,18 @@ public class HandController : MonoBehaviour
 
     private void MoveHand()
     {
-        currentPositionX += horizontal * handMoveSpeed * Time.deltaTime;
-        currentPositionZ += vertical * handMoveSpeed * Time.deltaTime;
+        currentPositionX = horizontal * handMoveSpeed * Time.deltaTime;
+        currentPositionZ = vertical * handMoveSpeed * Time.deltaTime;
 
-        currentPositionX = Mathf.Clamp(currentPositionX, minBoxPosition, maxBoxPosition);
-        currentPositionZ = Mathf.Clamp(currentPositionZ, minBoxPosition, maxBoxPosition);
+        transform.position += transform.right * currentPositionX + transform.forward * currentPositionZ;
 
-        transform.position = new Vector3(currentPositionX, 15, currentPositionZ);
+        var forward = cameraTransform.forward;
+        forward.y = 0f;
+        forward.Normalize();
+
+        transform.forward = forward;
+
+        KeepHandInBounds(minBoxPosition, maxBoxPosition);
     }
 
     private void SetLineRenderer()
@@ -61,5 +70,27 @@ public class HandController : MonoBehaviour
 
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, secondLinePosition);
+    }
+
+    private void KeepHandInBounds(float minBox, float maxBox)
+    {
+        if (transform.position.x < minBox)
+        {
+            transform.position = new Vector3(minBox, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x > maxBox)
+        {
+            transform.position = new Vector3(maxBox, transform.position.y, transform.position.z);
+        }
+        if (transform.position.z < minBox)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, minBox);
+        }
+        if (transform.position.z > maxBox)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, maxBox);
+        }
+
+
     }
 }
