@@ -596,7 +596,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lookAtTarget: {fileID: 194059709}
-  cameraSpeed: 500
+  cameraSpeed: 100
+  invertVertical: 0
+  invertHorizontal: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

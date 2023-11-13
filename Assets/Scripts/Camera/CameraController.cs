@@ -6,6 +6,8 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform _lookAtTarget;
     [SerializeField] private float cameraSpeed;
+    [SerializeField] private bool invertVertical;
+    [SerializeField] private bool invertHorizontal;
 
     private float mouseX;
     private float mouseY;
@@ -14,6 +16,9 @@ public class CameraController : MonoBehaviour
     {
         mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * cameraSpeed;
         mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * cameraSpeed;
+
+        mouseX = invertHorizontal ? mouseX * -1 : mouseX;
+        mouseY = invertVertical ? mouseY * -1 : mouseY;
     }
 
     // Update is called once per frame
