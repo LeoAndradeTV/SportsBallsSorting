@@ -25,6 +25,11 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.collider.CompareTag("Floor"))
+        {
+            GameManager.Instance.GameOver();
+        }
+
         Ball collidingBall = collision.gameObject.GetComponent<Ball>();
 
         if (collidingBall == null) return;
