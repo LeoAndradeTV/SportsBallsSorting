@@ -16,12 +16,6 @@ public class Ball : MonoBehaviour
         Initialize();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void Initialize()
     {
         _pointsAtCombining = _ballData.pointsAtCombining;
@@ -46,5 +40,10 @@ public class Ball : MonoBehaviour
     public Ball GetNextBall()
     {
         return _nextBall;
+    }
+
+    public int GetBallPoints()
+    {
+        return _pointsAtCombining;
     }
 }
