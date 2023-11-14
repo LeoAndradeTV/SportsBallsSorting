@@ -8,8 +8,21 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
 
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text highscoreText;
 
     private int score;
+    private IDataService dataService = new JsonDataService();
+    private int highScore;
+
+    public int HighScore
+    {
+        get { return highScore; }
+        set 
+        { 
+            highScore = value;
+            highscoreText.text = highScore.ToString();
+        }
+    }
 
     public int Score
     {
@@ -27,5 +40,24 @@ public class ScoreManager : MonoBehaviour
             Instance = this;
 
         Score = 0;
+        DeserializeJson();
+    }
+
+    public void SerializeJson()
+    {
+        if (Score < HighScore) { return; }
+
+        if (dataService.SaveData("/player-highscore.json", Score, false))
+        {
+
+        } else
+        {
+            Debug.LogError("Data failed to save");
+        }
+    }
+
+    public void DeserializeJson()
+    {
+        HighScore = dataService.LoadData<int>("/player-highscore.json", false);
     }
 }
