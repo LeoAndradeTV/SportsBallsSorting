@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private BallData _ballData;
 
+    private Sprite _ballSprite;
     private int _pointsAtCombining;
     private Ball _nextBall;
     private BallType _ballType;
@@ -57,6 +58,12 @@ public class Ball : MonoBehaviour
     public int GetBallPoints()
     {
         return _pointsAtCombining;
+    }
+
+    public Sprite GetBallSprite()
+    {
+        _ballSprite = _ballData.ballSprite;
+        return _ballSprite;
     }
 
     public void SetHasCollided()
