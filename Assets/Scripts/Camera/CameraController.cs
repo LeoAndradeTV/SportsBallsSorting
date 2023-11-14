@@ -27,7 +27,9 @@ public class CameraController : MonoBehaviour
         if (!Input.GetButton("Fire2")) return;
 
         transform.LookAt(_lookAtTarget);
-        transform.RotateAround(_lookAtTarget.position, Vector3.up, mouseX);
-        transform.RotateAround(_lookAtTarget.position, Vector3.right, mouseY);
+        transform.RotateAround(_lookAtTarget.position, _lookAtTarget.up, mouseX);
+        transform.RotateAround(_lookAtTarget.position, _lookAtTarget.right, mouseY);
+
+        _lookAtTarget.Rotate(Vector3.up * mouseX);
     }
 }
