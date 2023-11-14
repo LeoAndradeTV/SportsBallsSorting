@@ -7,11 +7,19 @@ public class HandSpawner : MonoBehaviour
     [SerializeField] private Ball[] possibleBalls;
 
     private Ball currentHeldBall;
+    private HandController handController;
 
     // Start is called before the first frame update
     void OnEnable()
     {
+        handController = GetComponent<HandController>();
         InstantiateRandomBall();
+        ActionsManager.BallHasCollided += InstantiateRandomBall;
+    }
+
+    private void OnDisable()
+    {
+        ActionsManager.BallHasCollided -= InstantiateRandomBall;
     }
 
     // Update is called once per frame
@@ -24,10 +32,9 @@ public class HandSpawner : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.Space)) return;
 
+        handController.DisableMovement();
         ToggleActiveBall(true);
         currentHeldBall.transform.parent = null;
-
-        InstantiateRandomBall();
     }
 
     private Ball PickRandomFromArray(Ball[] balls) 
