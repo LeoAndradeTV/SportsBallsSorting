@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
         set 
         { 
             highScore = value;
-            highscoreText.text = highScore.ToString();
+            highscoreText.text = "Highscore: " + highScore.ToString();
         }
     }
 
@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
         set 
         { 
             score = value; 
-            scoreText.text = score.ToString();
+            scoreText.text = "Score: " + score.ToString();
         }
     }
 
