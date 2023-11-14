@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
-using UnityEngine.Experimental.AI;
 
 [RequireComponent(typeof(LineRenderer))]
 public class HandController : MonoBehaviour
@@ -16,11 +12,13 @@ public class HandController : MonoBehaviour
 
     private float minBoxPosition = -4.5f;
     private float maxBoxPosition = 4.5f;
-    private const float HAND_Y_POSITION = 15f;
+    private const float HAND_Y_POSITION = 13f;
 
     private float horizontal;
     private float vertical;
     private LineRenderer lineRenderer;
+
+    private bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +26,16 @@ public class HandController : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
         cameraTransform = Camera.main.transform;
+    }
+
+    private void OnEnable()
+    {
+        ActionsManager.BallHasCollided += EnableMovement;
+    }
+
+    private void OnDisable()
+    {
+        ActionsManager.BallHasCollided -= EnableMovement;
     }
 
     // Update is called once per frame
@@ -40,6 +48,8 @@ public class HandController : MonoBehaviour
 
     private void GetInput()
     {
+        if (!canMove) return;
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
     }
@@ -70,6 +80,18 @@ public class HandController : MonoBehaviour
 
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, secondLinePosition);
+    }
+
+    public void DisableMovement()
+    {
+        lineRenderer.enabled = false;
+        canMove = false;
+    }
+
+    public void EnableMovement()
+    {
+        lineRenderer.enabled = true;
+        canMove = true;
     }
 
     private void KeepHandInBounds(float minBox, float maxBox)

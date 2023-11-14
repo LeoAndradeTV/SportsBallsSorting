@@ -26,7 +26,8 @@ public class BallCombineManager : MonoBehaviour
     {
         if (ballsToCombine.Count == 2)
         {
-            Instantiate(ballsToCombine[0].GetNextBall(), combinePosition, Quaternion.identity);
+            Ball ball = Instantiate(ballsToCombine[0].GetNextBall(), combinePosition, Quaternion.identity);
+            ball.SetHasCollided();
             ScoreManager.Instance.Score += ballsToCombine[0].GetBallPoints();
             ballsToCombine.Clear();
         }

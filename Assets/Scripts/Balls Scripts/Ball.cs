@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     private int _pointsAtCombining;
     private Ball _nextBall;
     private BallType _ballType;
+    private bool hasCollided;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -25,6 +26,12 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!hasCollided)
+        {
+            ActionsManager.BallHasCollided?.Invoke();
+            SetHasCollided();
+        }
+
         if (collision.collider.CompareTag("Floor"))
         {
             GameManager.Instance.GameOver();
@@ -50,5 +57,10 @@ public class Ball : MonoBehaviour
     public int GetBallPoints()
     {
         return _pointsAtCombining;
+    }
+
+    public void SetHasCollided()
+    {
+        hasCollided = true;
     }
 }
