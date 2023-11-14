@@ -1,25 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandSpawner : MonoBehaviour
 {
     [SerializeField] private Ball[] possibleBalls;
+    [SerializeField] private Image nextBallSprite;
 
     private Ball currentHeldBall;
+    private Ball nextBall;
     private HandController handController;
 
     // Start is called before the first frame update
     void OnEnable()
     {
         handController = GetComponent<HandController>();
-        InstantiateRandomBall();
-        ActionsManager.BallHasCollided += InstantiateRandomBall;
+        InstantiateNextBall();
+        ActionsManager.BallHasCollided += InstantiateNextBall;
     }
 
     private void OnDisable()
     {
-        ActionsManager.BallHasCollided -= InstantiateRandomBall;
+        ActionsManager.BallHasCollided -= InstantiateNextBall;
     }
 
     // Update is called once per frame
@@ -43,9 +46,17 @@ public class HandSpawner : MonoBehaviour
         return possibleBalls[randomIndex];
     }
 
-    private void InstantiateRandomBall()
+    private void SetNextBall()
     {
-        currentHeldBall = Instantiate(PickRandomFromArray(possibleBalls), transform);
+        Ball nextBall = PickRandomFromArray(possibleBalls);
+        nextBallSprite.sprite = nextBall.GetBallSprite();
+        this.nextBall = nextBall;
+    }
+
+    private void InstantiateNextBall()
+    {
+        currentHeldBall = nextBall == null ? Instantiate(PickRandomFromArray(possibleBalls), transform) : Instantiate(nextBall, transform);
+        SetNextBall();
         ToggleActiveBall(false);
     }
 

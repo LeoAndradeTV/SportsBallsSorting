@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: BowlingBall
   m_EditorClassIdentifier: 
+  ballSprite: {fileID: 21300000, guid: d9f0eb42236a53f41b45a768cf2cad7e, type: 3}
   pointsAtCombining: 20
   nextBall: {fileID: 3749839089074554194, guid: 3aaa24ed551741149acb87db63ba8bc6,
     type: 3}

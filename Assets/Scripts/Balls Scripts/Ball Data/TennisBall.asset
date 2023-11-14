@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: TennisBall
   m_EditorClassIdentifier: 
+  ballSprite: {fileID: 21300000, guid: 97c9c0ee96d96a04dae9d3c6eb7368f9, type: 3}
   pointsAtCombining: 5
   nextBall: {fileID: 3749839089074554194, guid: 16ed10e52de41764f97a245269b8a702,
     type: 3}
