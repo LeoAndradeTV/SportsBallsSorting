@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PickleBall
   m_EditorClassIdentifier: 
   pointsAtCombining: 8
-  nextBall: {fileID: 3749839089074554194, guid: 16ed10e52de41764f97a245269b8a702,
+  nextBall: {fileID: 3749839089074554194, guid: dac1817f57c09a2459120b92d5a337d3,
     type: 3}
   ballType: 3

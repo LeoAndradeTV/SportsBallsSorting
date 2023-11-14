@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
@@ -88,7 +88,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 47ed851cff7fa834e88e1948c253f3ac, type: 2}
+      objectReference: {fileID: 2100000, guid: 243e28dd11dc0864e97beca88517632a, type: 2}
     - target: {fileID: 5750794168858465931, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_Mass
@@ -99,8 +99,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golf Ball
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8787777673358571388, guid: 86ba0459827e8b04abf8a72289935ec2,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 763390538501458756, guid: e31dbf9d6ae85fb48af49f02b88a33ac,
+        type: 3}
+    m_RemovedComponents:
+    - {fileID: 6247893916318198103, guid: 86ba0459827e8b04abf8a72289935ec2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8526104042839274661, guid: 86ba0459827e8b04abf8a72289935ec2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4230382069898073523}
   m_SourcePrefab: {fileID: 100100000, guid: 86ba0459827e8b04abf8a72289935ec2, type: 3}
+--- !u!1 &3436874224148244593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8526104042839274661, guid: 86ba0459827e8b04abf8a72289935ec2,
+    type: 3}
+  m_PrefabInstance: {fileID: 6476445171582606548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &4230382069898073523
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436874224148244593}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.17453443
+  m_Center: {x: 0, y: 0, z: 0}
