@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TennisBall
   m_EditorClassIdentifier: 
   pointsAtCombining: 5
-  nextBall: {fileID: 3749839089074554194, guid: 45a36a62fd164ed45a99f93ae73996e5,
+  nextBall: {fileID: 3749839089074554194, guid: 16ed10e52de41764f97a245269b8a702,
     type: 3}
   ballType: 2

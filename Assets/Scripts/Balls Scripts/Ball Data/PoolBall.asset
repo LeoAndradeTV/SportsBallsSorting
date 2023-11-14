@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
-  m_Name: Softball
+  m_Name: PoolBall
   m_EditorClassIdentifier: 
   pointsAtCombining: 10
-  nextBall: {fileID: 3749839089074554194, guid: dac1817f57c09a2459120b92d5a337d3,
+  nextBall: {fileID: 3749839089074554194, guid: 45a36a62fd164ed45a99f93ae73996e5,
     type: 3}
   ballType: 4
