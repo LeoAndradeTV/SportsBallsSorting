@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
@@ -128,7 +128,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3436874224148244593}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d1f7b3eced91fa345a3d57b0e75cc7bd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
