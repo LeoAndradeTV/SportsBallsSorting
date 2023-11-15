@@ -12,7 +12,7 @@ public class HandController : MonoBehaviour
 
     private float minBoxPosition = -4.5f;
     private float maxBoxPosition = 4.5f;
-    private const float HAND_Y_POSITION = 13f;
+    private const float HAND_Y_POSITION = 15f;
 
     private float horizontal;
     private float vertical;
