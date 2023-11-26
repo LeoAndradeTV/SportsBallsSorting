@@ -38,6 +38,8 @@ public class Ball : MonoBehaviour
             GameManager.Instance.GameOver();
         }
 
+        GetComponent<Rigidbody>().AddForce(GetRandomForce());
+
         Ball collidingBall = collision.gameObject.GetComponent<Ball>();
 
         if (collidingBall == null) return;
@@ -69,5 +71,10 @@ public class Ball : MonoBehaviour
     public void SetHasCollided()
     {
         hasCollided = true;
+    }
+
+    private Vector3 GetRandomForce()
+    {
+        return new Vector3(Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f));
     }
 }
