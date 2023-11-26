@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+        
     }
 
     // Start is called before the first frame update
@@ -28,5 +29,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over!");
         ScoreManager.Instance.SerializeJson();
+        Application.Quit();
     }
 }

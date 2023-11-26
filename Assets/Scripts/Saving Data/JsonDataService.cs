@@ -36,7 +36,7 @@ public class JsonDataService : IDataService
 
         if (!File.Exists(path))
         {
-            SaveData<int>(path, 0, false);
+            SaveData<int>(relativePath, 0, false);
         }
 
         try
