@@ -12,9 +12,6 @@ public class CameraController : MonoBehaviour
     private float mouseX;
     private float mouseY;
 
-    private float camPositionY = 5f;
-    private float camPositionZ = 0;
-
     private void Update()
     {
         if (!Input.GetButton("Fire2"))
