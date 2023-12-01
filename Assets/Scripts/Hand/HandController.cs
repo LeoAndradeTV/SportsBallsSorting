@@ -3,7 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class HandController : MonoBehaviour
 {
-    [SerializeField] private float handMoveSpeed;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject settingsMenu;
+
+    private float handMoveSpeed;
 
     private Transform cameraTransform;
 
@@ -30,20 +33,33 @@ public class HandController : MonoBehaviour
 
     private void OnEnable()
     {
+        SetSpeed();
         ActionsManager.BallHasCollided += EnableMovement;
+        GameManager.Instance.OnSettingsChanged += SetSpeed;
     }
 
     private void OnDisable()
     {
         ActionsManager.BallHasCollided -= EnableMovement;
+        GameManager.Instance.OnSettingsChanged -= SetSpeed;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckForPauseInput();
+
+        if (GameManager.Instance.CurrentState == GameState.Paused) { return; }
+
         GetInput();
         MoveHand();
         SetLineRenderer();
+    }
+
+    private void SetSpeed()
+    {
+        handMoveSpeed = GameManager.Instance.MovementSpeed / 15f;
     }
 
     private void GetInput()
@@ -86,6 +102,8 @@ public class HandController : MonoBehaviour
     {
         lineRenderer.enabled = false;
         canMove = false;
+        horizontal = 0;
+        vertical = 0;
     }
 
     public void EnableMovement()
@@ -112,7 +130,23 @@ public class HandController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, maxBox);
         }
+    }
 
+    private void CheckForPauseInput()
+    {
+        if (GameManager.Instance.CurrentState == GameState.Paused && Input.GetKeyUp(KeyCode.Escape))
+        {
+            GameManager.Instance.ResumeGame();
+            pauseMenu.SetActive(false);
+            settingsMenu.SetActive(false);
+            return;
+        }
 
+        if (GameManager.Instance.CurrentState == GameState.Playing && Input.GetKeyUp(KeyCode.Escape))
+        {
+            GameManager.Instance.PauseGame();
+            pauseMenu.SetActive(true);
+            return;
+        }
     }
 }
