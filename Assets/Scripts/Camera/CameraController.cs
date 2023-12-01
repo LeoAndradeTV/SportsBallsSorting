@@ -5,15 +5,28 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform _lookAtTarget;
-    [SerializeField] private float cameraSpeed;
     [SerializeField] private bool invertVertical;
     [SerializeField] private bool invertHorizontal;
 
     private float mouseX;
     private float mouseY;
+    private float cameraSpeed;
+
+    private void OnEnable()
+    {
+        SetSpeed();
+        GameManager.Instance.OnSettingsChanged += SetSpeed;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnSettingsChanged -= SetSpeed;
+    }
 
     private void Update()
     {
+        if (GameManager.Instance.CurrentState == GameState.Paused) { return; }
+
         if (!Input.GetButton("Fire2"))
         {
             mouseX = 0; 
@@ -35,5 +48,10 @@ public class CameraController : MonoBehaviour
         _lookAtTarget.Rotate(Vector3.up, mouseX);
         transform.RotateAround(_lookAtTarget.position, _lookAtTarget.up, mouseX);
         transform.RotateAround(_lookAtTarget.position, _lookAtTarget.right, mouseY);
+    }
+
+    private void SetSpeed()
+    {
+        cameraSpeed = GameManager.Instance.CameraSpeed * 10f;
     }
 }
