@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
     public Action OnSettingsChanged;
+    public Action OnGameOver;
 
     public GameState CurrentState { get; private set; }
 
@@ -58,6 +60,11 @@ public class GameManager : MonoBehaviour
         CurrentState = GameState.Paused;
     }
 
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
+
     public void ResumeGame()
     {
         CurrentState = GameState.Playing;
@@ -67,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over!");
         ScoreManager.Instance.SerializeJson();
+        OnGameOver?.Invoke();
     }
 
     public void SetMovementSpeed(float speed)
