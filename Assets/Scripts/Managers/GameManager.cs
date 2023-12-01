@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over!");
         ScoreManager.Instance.SerializeJson();
+        CurrentState = GameState.Paused;
         OnGameOver?.Invoke();
     }
 

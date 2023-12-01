@@ -102,6 +102,8 @@ public class HandController : MonoBehaviour
     {
         lineRenderer.enabled = false;
         canMove = false;
+        horizontal = 0;
+        vertical = 0;
     }
 
     public void EnableMovement()
