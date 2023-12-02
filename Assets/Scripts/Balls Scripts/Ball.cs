@@ -18,6 +18,14 @@ public class Ball : MonoBehaviour
         Initialize();
     }
 
+    private void Update()
+    {
+        if (transform.parent != null)
+        {
+            transform.localPosition = Vector3.zero;
+        }
+    }
+
     private void Initialize()
     {
         _pointsAtCombining = _ballData.pointsAtCombining;
@@ -27,14 +35,11 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!hasCollided)
-        {
-            ActionsManager.BallHasCollided?.Invoke();
-            SetHasCollided();
-        }
+
 
         if (collision.collider.CompareTag("Floor"))
         {
+            AudioManager.Instance.PlayGameOverAudio();
             GameManager.Instance.GameOver();
         }
 
@@ -42,9 +47,33 @@ public class Ball : MonoBehaviour
 
         Ball collidingBall = collision.gameObject.GetComponent<Ball>();
 
-        if (collidingBall == null) return;
+        if (collidingBall == null)
+        {
+            if (!hasCollided)
+            {
+                AudioManager.Instance.PlayBoxAudio();
+                ActionsManager.BallHasCollided?.Invoke();
+                SetHasCollided();
+            }
+            return;
+        }
 
-        if (collidingBall._ballType != _ballType) return;
+        if (collidingBall._ballType != _ballType)
+        {
+            if (!hasCollided)
+            {
+                AudioManager.Instance.PlayHitOtherBallAudio();
+                ActionsManager.BallHasCollided?.Invoke();
+                SetHasCollided();
+            }
+            return;
+        }
+
+        if (!hasCollided)
+        {
+            ActionsManager.BallHasCollided?.Invoke();
+            SetHasCollided();
+        }
 
         BallCombineManager.Instance.AddToBallsList(this);
         BallCombineManager.Instance.Combine(collision.contacts[0].point);
