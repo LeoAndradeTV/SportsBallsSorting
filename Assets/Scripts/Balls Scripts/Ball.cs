@@ -18,6 +18,14 @@ public class Ball : MonoBehaviour
         Initialize();
     }
 
+    private void Update()
+    {
+        if (transform.parent != null)
+        {
+            transform.localPosition = Vector3.zero;
+        }
+    }
+
     private void Initialize()
     {
         _pointsAtCombining = _ballData.pointsAtCombining;

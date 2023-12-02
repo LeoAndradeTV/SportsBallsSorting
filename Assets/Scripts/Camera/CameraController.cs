@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.CurrentState == GameState.Paused) { return; }
+        if (GameManager.Instance.CurrentState != GameState.Playing) { return; }
 
         if (!Input.GetButton("Fire2"))
         {
