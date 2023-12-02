@@ -29,6 +29,7 @@ public class BallCombineManager : MonoBehaviour
             Ball ball = Instantiate(ballsToCombine[0].GetNextBall(), combinePosition, Quaternion.identity);
             ball.SetHasCollided();
             ScoreManager.Instance.Score += ballsToCombine[0].GetBallPoints();
+            AudioManager.Instance.PlayCombineAudio();
             ballsToCombine.Clear();
         }
     }
