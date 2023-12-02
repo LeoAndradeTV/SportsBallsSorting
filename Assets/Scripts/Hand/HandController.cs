@@ -13,8 +13,8 @@ public class HandController : MonoBehaviour
     private float currentPositionX;
     private float currentPositionZ;
 
-    private float minBoxPosition = -4.5f;
-    private float maxBoxPosition = 4.5f;
+    private float minBoxPosition = -4f;
+    private float maxBoxPosition = 4f;
     private const float HAND_Y_POSITION = 15f;
 
     private float horizontal;
@@ -50,7 +50,7 @@ public class HandController : MonoBehaviour
     {
         CheckForPauseInput();
 
-        if (GameManager.Instance.CurrentState == GameState.Paused) { return; }
+        if (GameManager.Instance.CurrentState != GameState.Playing) { return; }
 
         GetInput();
         MoveHand();
@@ -139,6 +139,7 @@ public class HandController : MonoBehaviour
             GameManager.Instance.ResumeGame();
             pauseMenu.SetActive(false);
             settingsMenu.SetActive(false);
+            GameManager.Instance.SaveMySettings();
             return;
         }
 
