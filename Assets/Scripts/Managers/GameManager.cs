@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         CurrentState = GameState.Playing;
+        Time.timeScale = 1;
     }
 
     public void GameOver()
@@ -117,6 +118,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over!");
         ScoreManager.Instance.SerializeJson();
         CurrentState = GameState.Paused;
+        Time.timeScale = 0;
         OnGameOver?.Invoke();
     }
 
