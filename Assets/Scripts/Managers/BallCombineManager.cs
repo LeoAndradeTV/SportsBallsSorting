@@ -22,6 +22,12 @@ public class BallCombineManager : MonoBehaviour
         ballsToCombine.Add(ballToAdd);
     }
 
+    public void PlayCombineEffect(ParticleSystem ballEffect, Vector3 position, Ball ball)
+    {
+        GameObject effect = Instantiate(ballEffect.gameObject, position, Quaternion.identity);    
+        effect.transform.localScale = ball.transform.localScale / 2f;
+    }
+
     public void Combine(Vector3 combinePosition)
     {
         if (ballsToCombine.Count == 2)
@@ -29,6 +35,7 @@ public class BallCombineManager : MonoBehaviour
             Ball ball = Instantiate(ballsToCombine[0].GetNextBall(), combinePosition, Quaternion.identity);
             ball.SetHasCollided();
             ScoreManager.Instance.Score += ballsToCombine[0].GetBallPoints();
+            PlayCombineEffect(ball.GetEffect(), combinePosition, ball);
             AudioManager.Instance.PlayCombineAudio();
             ballsToCombine.Clear();
         }

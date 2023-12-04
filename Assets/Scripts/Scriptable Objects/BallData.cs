@@ -9,6 +9,7 @@ public class BallData : ScriptableObject
     public int pointsAtCombining;
     public Ball nextBall;
     public BallType ballType;
+    public ParticleSystem particleSystem;
 
     // TODO:
     // Add audio clip
