@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     private Ball _nextBall;
     private BallType _ballType;
     private bool hasCollided;
+    private ParticleSystem _particleSystem;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -31,6 +32,7 @@ public class Ball : MonoBehaviour
         _pointsAtCombining = _ballData.pointsAtCombining;
         _nextBall = _ballData.nextBall;
         _ballType = _ballData.ballType;
+        _particleSystem = _ballData.particleSystem;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -95,6 +97,11 @@ public class Ball : MonoBehaviour
     {
         _ballSprite = _ballData.ballSprite;
         return _ballSprite;
+    }
+
+    public ParticleSystem GetEffect()
+    {
+        return _particleSystem;
     }
 
     public void SetHasCollided()

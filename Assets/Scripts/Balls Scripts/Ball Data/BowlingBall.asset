@@ -17,3 +17,5 @@ MonoBehaviour:
   nextBall: {fileID: 3749839089074554194, guid: 3aaa24ed551741149acb87db63ba8bc6,
     type: 3}
   ballType: 7
+  particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
+    type: 3}

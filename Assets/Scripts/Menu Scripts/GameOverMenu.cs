@@ -26,7 +26,14 @@ public class GameOverMenu : MonoBehaviour
             Hide();
         });
 
-        finalScoreText.text = $"Your final score: {ScoreManager.Instance.Score}";
+        if (ScoreManager.Instance.Score > ScoreManager.Instance.HighScore)
+        {
+            finalScoreText.text = $"New High Score!  {ScoreManager.Instance.Score}";
+        }
+        else
+        {
+            finalScoreText.text = $"Your Final Score: {ScoreManager.Instance.Score}";
+        }
 
     }
 
