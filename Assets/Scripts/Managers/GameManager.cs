@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public Action OnGameOver;
 
     public GameState CurrentState { get; private set; }
-    private IDataService settingsData = new JsonDataService();
 
     public float MovementSpeed { get; private set; }
     public float CameraSpeed { get; private set; }
@@ -116,7 +115,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("Game Over!");
-        ScoreManager.Instance.SerializeJson();
+        ScoreManager.Instance.SaveHighScore();
         CurrentState = GameState.Paused;
         Time.timeScale = 0;
         OnGameOver?.Invoke();
