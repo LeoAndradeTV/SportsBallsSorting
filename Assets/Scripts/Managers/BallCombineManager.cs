@@ -25,7 +25,7 @@ public class BallCombineManager : MonoBehaviour
     public void PlayCombineEffect(ParticleSystem ballEffect, Vector3 position, Ball ball)
     {
         GameObject effect = Instantiate(ballEffect.gameObject, position, Quaternion.identity);    
-        effect.transform.localScale = ball.transform.localScale / 2f;
+        //effect.transform.localScale = ball.transform.localScale / 2f;
     }
 
     public void Combine(Vector3 combinePosition)
