@@ -31,6 +31,10 @@ public class ScoreManager : MonoBehaviour
         { 
             score = value; 
             scoreText.text = score.ToString();
+            if (Score > HighScore)
+            {
+                SaveHighScore();
+            }
         }
     }
 
@@ -40,10 +44,10 @@ public class ScoreManager : MonoBehaviour
             Instance = this;
 
         Score = 0;
-        DeserializeJson();
+        LoadHighScore();
     }
 
-    public void SerializeJson()
+    public void SaveHighScore()
     {
         if (Score < HighScore) { return; }
 
@@ -56,7 +60,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void DeserializeJson()
+    public void LoadHighScore()
     {
         HighScore = dataService.LoadData<int>("/player-highscore.json", false);
     }
