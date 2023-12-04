@@ -17,12 +17,14 @@ public class GameOverMenu : MonoBehaviour
         replayButton.onClick.AddListener(() =>
         {
             GameManager.Instance.LoadGameScene();
+            Time.timeScale = 1.0f;
             Hide();
         });
 
         quitButton.onClick.AddListener(() =>
         {
             GameManager.Instance.LoadMenuScene();
+            Time.timeScale = 1.0f;
             Hide();
         });
 
@@ -42,12 +44,14 @@ public class GameOverMenu : MonoBehaviour
         replayButton.onClick.RemoveListener(() =>
         {
             GameManager.Instance.LoadGameScene();
+            Time.timeScale = 1.0f;
             Hide();
         });
 
         quitButton.onClick.RemoveListener(() =>
         {
             GameManager.Instance.LoadMenuScene();
+            Time.timeScale = 1.0f;
             Hide();
         });
     }
