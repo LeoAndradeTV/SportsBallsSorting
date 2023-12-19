@@ -8,6 +8,8 @@ public class BallCombineManager : MonoBehaviour
 
     private List<Ball> ballsToCombine = new List<Ball>();
 
+    private bool hasRecentlyCombined;
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -25,19 +27,36 @@ public class BallCombineManager : MonoBehaviour
     public void PlayCombineEffect(ParticleSystem ballEffect, Vector3 position, Ball ball)
     {
         GameObject effect = Instantiate(ballEffect.gameObject, position, Quaternion.identity);    
-        //effect.transform.localScale = ball.transform.localScale / 2f;
     }
 
     public void Combine(Vector3 combinePosition)
     {
         if (ballsToCombine.Count == 2)
         {
+            if (hasRecentlyCombined)
+            {
+                ballsToCombine.Clear();
+                return;
+            }
+
             Ball ball = Instantiate(ballsToCombine[0].GetNextBall(), combinePosition, Quaternion.identity);
             ball.SetHasCollided();
             ScoreManager.Instance.Score += ballsToCombine[0].GetBallPoints();
             PlayCombineEffect(ball.GetEffect(), combinePosition, ball);
             AudioManager.Instance.PlayCombineAudio();
+            foreach (Ball b in ballsToCombine)
+            {
+                Destroy(b.gameObject);
+            }
             ballsToCombine.Clear();
+            hasRecentlyCombined = true;
+            ResetRecentCombination();
         }
+    }
+
+    private async void ResetRecentCombination()
+    {
+        await System.Threading.Tasks.Task.Delay(1000);
+        hasRecentlyCombined = false;
     }
 }

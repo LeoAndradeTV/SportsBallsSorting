@@ -37,18 +37,21 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
-
+        // Ball goes out of the box
         if (collision.collider.CompareTag("Floor"))
         {
             AudioManager.Instance.PlayGameOverAudio();
             GameManager.Instance.GameOver();
+            return;
         }
 
+        // Adds tiny random force so balls can't stack
         GetComponent<Rigidbody>().AddForce(GetRandomForce());
 
+        // Grabs a ball that we're colliding with
         Ball collidingBall = collision.gameObject.GetComponent<Ball>();
 
+        // If the first collision isn't a ball
         if (collidingBall == null)
         {
             if (!hasCollided)
@@ -60,6 +63,7 @@ public class Ball : MonoBehaviour
             return;
         }
 
+        // If the first collision is a ball but not of the same type
         if (collidingBall._ballType != _ballType)
         {
             if (!hasCollided)
@@ -80,7 +84,8 @@ public class Ball : MonoBehaviour
         BallCombineManager.Instance.AddToBallsList(this);
         BallCombineManager.Instance.Combine(collision.contacts[0].point);
 
-        Destroy(gameObject);
+        Debug.Log($"{collision.contactCount}");
+        Debug.Log($"{collision.contacts[0].point}");
     }
 
     public Ball GetNextBall()
