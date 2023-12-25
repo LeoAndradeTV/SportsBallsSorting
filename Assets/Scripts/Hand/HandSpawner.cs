@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class HandSpawner : MonoBehaviour
 {
     [SerializeField] private Ball[] possibleBalls;
     [SerializeField] private Image nextBallSprite;
+
+    private PlayerInputActions inputActions;
 
     private Ball currentHeldBall;
     private Ball nextBall;
@@ -18,28 +21,19 @@ public class HandSpawner : MonoBehaviour
         handController = GetComponent<HandController>();
         InstantiateNextBall();
         ActionsManager.BallHasCollided += InstantiateNextBall;
+        inputActions = new PlayerInputActions();
+        inputActions.Player.Enable();
+        inputActions.Player.Drop.performed += Drop_performed;
+    }
+
+    private void Drop_performed(InputAction.CallbackContext obj)
+    {
+        DropBall();
     }
 
     private void OnDisable()
     {
         ActionsManager.BallHasCollided -= InstantiateNextBall;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (GameManager.Instance.CurrentState != GameState.Playing) return;
-
-        TryDroppingBall();   
-    }
-
-    private void TryDroppingBall()
-    {
-        if (!Input.GetKeyDown(KeyCode.Space)) return;
-
-        handController.DisableMovement();
-        ToggleActiveBall(true);
-        currentHeldBall.transform.parent = null;
     }
 
     private Ball PickRandomFromArray(Ball[] balls) 
@@ -66,5 +60,14 @@ public class HandSpawner : MonoBehaviour
     {
         currentHeldBall.GetComponent<Rigidbody>().useGravity = toggle;
         currentHeldBall.GetComponent<Collider>().enabled = toggle;
+    }
+
+    public void DropBall()
+    {
+        if (GameManager.Instance.CurrentState != GameState.Playing) return;
+
+        handController.DisableMovement();
+        ToggleActiveBall(true);
+        currentHeldBall.transform.parent = null;
     }
 }

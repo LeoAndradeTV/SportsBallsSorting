@@ -2627,6 +2627,7 @@ GameObject:
   - component: {fileID: 678408798}
   - component: {fileID: 678408797}
   - component: {fileID: 678408800}
+  - component: {fileID: 678408801}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -2763,6 +2764,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
+--- !u!114 &678408801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678408795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &685903264
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,6 +3188,7 @@ GameObject:
   - component: {fileID: 836482209}
   - component: {fileID: 836482208}
   - component: {fileID: 836482211}
+  - component: {fileID: 836482212}
   m_Layer: 5
   m_Name: Settings Button
   m_TagString: Untagged
@@ -3322,6 +3337,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
+--- !u!114 &836482212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836482206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &840177570
 GameObject:
   m_ObjectHideFlags: 0
@@ -4593,6 +4621,7 @@ GameObject:
   - component: {fileID: 1214552283}
   - component: {fileID: 1214552282}
   - component: {fileID: 1214552285}
+  - component: {fileID: 1214552286}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -4729,6 +4758,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
+--- !u!114 &1214552286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214552280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &1219104169
 GameObject:
   m_ObjectHideFlags: 0

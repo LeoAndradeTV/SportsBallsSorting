@@ -49,7 +49,12 @@ public class GameManager : MonoBehaviour
     public void LoadGameScene()
     {
         CurrentState = GameState.Tutorial;
-        SceneManager.LoadScene(SceneTypes.GameScene.ToString());
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+        SceneManager.LoadScene(SceneTypes.MobileGameScene.ToString());
+#endif
+#if UNITY_IOS || UNITY_ANDROID
+    SceneManager.LoadScene(SceneTypes.MobileGameScene.ToString());
+#endif
     }
 
     public void LoadMenuScene()
@@ -68,8 +73,6 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetString("settings", data);
         PlayerPrefs.Save();
-
-       Debug.Log(PlayerPrefs.GetString("settings"));
     }
 
     public void LoadMySettings()

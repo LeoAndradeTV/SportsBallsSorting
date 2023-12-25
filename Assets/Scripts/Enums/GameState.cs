@@ -5,5 +5,6 @@ using UnityEngine;
 public enum SceneTypes
 {
     MainMenu,
-    GameScene
+    GameScene,
+    MobileGameScene
 }
