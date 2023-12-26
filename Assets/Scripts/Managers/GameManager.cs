@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour
     {
         CurrentState = GameState.Tutorial;
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
-        SceneManager.LoadScene(SceneTypes.MobileGameScene.ToString());
+        SceneManager.LoadScene(SceneTypes.GameScene.ToString());
 #endif
-#if UNITY_IOS || UNITY_ANDROID
+#if UNITY_IOS
     SceneManager.LoadScene(SceneTypes.MobileGameScene.ToString());
 #endif
     }

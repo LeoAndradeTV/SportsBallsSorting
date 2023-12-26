@@ -71,12 +71,17 @@ public class HandController : MonoBehaviour
 
         horizontal = inputActions.Player.Move.ReadValue<Vector2>().x;
         vertical = inputActions.Player.Move.ReadValue<Vector2>().y;
+
+        Debug.Log($"Horizontal Input {horizontal}, Vertical Input {vertical}");
     }
 
     private void MoveHand()
     {
         currentPositionX = horizontal * handMoveSpeed * Time.deltaTime;
         currentPositionZ = vertical * handMoveSpeed * Time.deltaTime;
+
+        Debug.Log($"X {currentPositionX}, Y {currentPositionZ}");
+
 
         transform.position += transform.right * currentPositionX + transform.forward * currentPositionZ;
 

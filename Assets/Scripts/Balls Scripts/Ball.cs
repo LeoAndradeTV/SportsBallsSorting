@@ -23,7 +23,7 @@ public class Ball : MonoBehaviour
     {
         if (transform.parent != null)
         {
-            transform.localPosition = Vector3.zero;
+            transform.position = transform.parent.position;
         }
     }
 
@@ -83,9 +83,6 @@ public class Ball : MonoBehaviour
 
         BallCombineManager.Instance.AddToBallsList(this);
         BallCombineManager.Instance.Combine(collision.contacts[0].point);
-
-        Debug.Log($"{collision.contactCount}");
-        Debug.Log($"{collision.contacts[0].point}");
     }
 
     public Ball GetNextBall()
@@ -112,6 +109,24 @@ public class Ball : MonoBehaviour
     public void SetHasCollided()
     {
         hasCollided = true;
+    }
+
+    public void DropBall()
+    {
+        transform.position = transform.parent.position;
+
+        ToggleBall(true);
+
+        Debug.Log($"Ball position is: {transform.position}");
+
+        transform.parent = null;
+
+    }
+
+    public void ToggleBall(bool toggle)
+    {
+        GetComponent<Rigidbody>().useGravity = toggle;
+        GetComponent<Collider>().enabled = toggle;
     }
 
     private Vector3 GetRandomForce()

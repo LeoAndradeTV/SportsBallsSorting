@@ -53,21 +53,16 @@ public class HandSpawner : MonoBehaviour
     {
         currentHeldBall = nextBall == null ? Instantiate(PickRandomFromArray(possibleBalls), transform) : Instantiate(nextBall, transform);
         SetNextBall();
-        ToggleActiveBall(false);
-    }
-
-    private void ToggleActiveBall(bool toggle)
-    {
-        currentHeldBall.GetComponent<Rigidbody>().useGravity = toggle;
-        currentHeldBall.GetComponent<Collider>().enabled = toggle;
+        currentHeldBall.ToggleBall(false);
     }
 
     public void DropBall()
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
+        currentHeldBall.DropBall();
+        Debug.Log($"hand position is {transform.position}");
         handController.DisableMovement();
-        ToggleActiveBall(true);
-        currentHeldBall.transform.parent = null;
+
     }
 }
