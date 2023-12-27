@@ -56,33 +56,6 @@ public class CameraController : MonoBehaviour
         mouseX = inputActions.Player.MoveCameraX.ReadValue<float>() * Time.deltaTime * cameraSpeed;
         mouseY = inputActions.Player.MoveCameraY.ReadValue<float>() * Time.deltaTime * cameraSpeed;
 #endif
-#if UNITY_IOS || UNITY_ANDROID
-        if (Input.touchCount == 1)
-        {
-            canMoveCamera = true;
-            if (touch.deltaPosition.x < 0)
-            {
-                mouseX = -1 * Time.deltaTime * cameraSpeed;
-            }
-            if (touch.deltaPosition.x > 0)
-            {
-                mouseX = 1 * Time.deltaTime * cameraSpeed;
-
-            }
-            if (touch.deltaPosition.y < 0)
-            {
-                mouseY = -1 * Time.deltaTime * cameraSpeed;
-            }
-            if (touch.deltaPosition.y > 0)
-            {
-                mouseY = 1 * Time.deltaTime * cameraSpeed;
-            }
-        }
-        else
-        {
-            canMoveCamera = false;
-        }
-#endif
 
         mouseX = invertHorizontal ? mouseX * -1 : mouseX;
         mouseY = invertVertical ? mouseY * -1 : mouseY;

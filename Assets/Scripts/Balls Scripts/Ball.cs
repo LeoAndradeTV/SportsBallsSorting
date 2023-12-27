@@ -6,6 +6,9 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private BallData _ballData;
 
+    private Rigidbody _rb;
+    private Collider _collider;
+
     private Sprite _ballSprite;
     private int _pointsAtCombining;
     private Ball _nextBall;
@@ -21,10 +24,10 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (transform.parent != null)
-        {
-            transform.position = transform.parent.position;
-        }
+        //if (transform.parent != null)
+        //{
+        //    transform.localPosition = Vector3.zero;
+        //}
     }
 
     private void Initialize()
@@ -33,6 +36,8 @@ public class Ball : MonoBehaviour
         _nextBall = _ballData.nextBall;
         _ballType = _ballData.ballType;
         _particleSystem = _ballData.particleSystem;
+        _rb = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,7 +49,7 @@ public class Ball : MonoBehaviour
             GameManager.Instance.GameOver();
             return;
         }
-
+        
         // Adds tiny random force so balls can't stack
         GetComponent<Rigidbody>().AddForce(GetRandomForce());
 
@@ -113,20 +118,16 @@ public class Ball : MonoBehaviour
 
     public void DropBall()
     {
-        transform.position = transform.parent.position;
-
+        //Vector3 dropPosition = transform.parent.position;
+        //ransform.parent = null;
+        //transform.position = dropPosition;
         ToggleBall(true);
-
-        Debug.Log($"Ball position is: {transform.position}");
-
-        transform.parent = null;
-
     }
 
     public void ToggleBall(bool toggle)
     {
-        GetComponent<Rigidbody>().useGravity = toggle;
-        GetComponent<Collider>().enabled = toggle;
+        _rb.useGravity = toggle;
+        _collider.enabled = toggle;
     }
 
     private Vector3 GetRandomForce()

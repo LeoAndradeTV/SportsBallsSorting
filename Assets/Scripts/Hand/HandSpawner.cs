@@ -16,7 +16,7 @@ public class HandSpawner : MonoBehaviour
     private HandController handController;
 
     // Start is called before the first frame update
-    void OnEnable()
+    void Start()
     {
         handController = GetComponent<HandController>();
         InstantiateNextBall();
@@ -51,9 +51,12 @@ public class HandSpawner : MonoBehaviour
 
     private void InstantiateNextBall()
     {
-        currentHeldBall = nextBall == null ? Instantiate(PickRandomFromArray(possibleBalls), transform) : Instantiate(nextBall, transform);
+        currentHeldBall = nextBall == null ?
+            Instantiate(
+                PickRandomFromArray(possibleBalls),
+                transform.position, Quaternion.identity) :
+                Instantiate(nextBall, transform.position, Quaternion.identity);
         SetNextBall();
-        currentHeldBall.ToggleBall(false);
     }
 
     public void DropBall()
@@ -61,8 +64,12 @@ public class HandSpawner : MonoBehaviour
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
         currentHeldBall.DropBall();
-        Debug.Log($"hand position is {transform.position}");
         handController.DisableMovement();
 
+    }
+
+    public Ball GetCurrentBall()
+    {
+        return currentHeldBall;
     }
 }

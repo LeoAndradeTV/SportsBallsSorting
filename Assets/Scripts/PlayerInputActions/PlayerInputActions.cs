@@ -49,7 +49,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""MoveCameraX"",
                     ""type"": ""Value"",
                     ""id"": ""17e31bf4-808c-447f-96da-0ed7ecbb6ef5"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Touch"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

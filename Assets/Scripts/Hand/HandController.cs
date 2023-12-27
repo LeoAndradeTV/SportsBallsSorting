@@ -9,6 +9,7 @@ public class HandController : MonoBehaviour
 
     private float handMoveSpeed;
     private PlayerInputActions inputActions;
+    private HandSpawner handSpawner;
 
     private Transform cameraTransform;
 
@@ -34,6 +35,7 @@ public class HandController : MonoBehaviour
         inputActions = new PlayerInputActions();
         inputActions.Player.Enable();
         inputActions.Player.Pause.performed += Pause_performed;
+        handSpawner = GetComponent<HandSpawner>();
     }
 
     private void OnEnable()
@@ -56,7 +58,8 @@ public class HandController : MonoBehaviour
         if (GameManager.Instance.CurrentState != GameState.Playing) { return; }
 
         GetInput();
-        MoveHand();
+        MoveHandAndBall();
+        //MoveCurrentBall();
         SetLineRenderer();
     }
 
@@ -72,16 +75,12 @@ public class HandController : MonoBehaviour
         horizontal = inputActions.Player.Move.ReadValue<Vector2>().x;
         vertical = inputActions.Player.Move.ReadValue<Vector2>().y;
 
-        Debug.Log($"Horizontal Input {horizontal}, Vertical Input {vertical}");
     }
 
-    private void MoveHand()
+    private void MoveHandAndBall()
     {
         currentPositionX = horizontal * handMoveSpeed * Time.deltaTime;
         currentPositionZ = vertical * handMoveSpeed * Time.deltaTime;
-
-        Debug.Log($"X {currentPositionX}, Y {currentPositionZ}");
-
 
         transform.position += transform.right * currentPositionX + transform.forward * currentPositionZ;
 
@@ -91,8 +90,32 @@ public class HandController : MonoBehaviour
 
         transform.forward = forward;
 
-        KeepHandInBounds(minBoxPosition, maxBoxPosition);
+        Ball currentHeldBall = handSpawner.GetCurrentBall();
+
+        if (currentHeldBall == null) return;
+        currentHeldBall.transform.position += transform.right * currentPositionX + transform.forward * currentPositionZ;
+        currentHeldBall.transform.forward = forward;
+
+        KeepObjectInBounds(currentHeldBall.transform, minBoxPosition, maxBoxPosition);
+        KeepObjectInBounds(transform,minBoxPosition, maxBoxPosition);
     }
+
+    //private void MoveCurrentBall()
+    //{
+    //    Ball currentHeldBall = handSpawner.GetCurrentBall();
+
+    //    if (currentHeldBall == null) return;
+
+    //    currentHeldBall.transform.position += transform.right * currentPositionX + transform.forward * currentPositionZ;
+
+    //    var forward = cameraTransform.forward;
+    //    forward.y = 0f;
+    //    forward.Normalize();
+
+    //    currentHeldBall.transform.forward = forward;
+
+    //    KeepObjectInBounds(currentHeldBall.transform, minBoxPosition, maxBoxPosition);
+    //}
 
     private void SetLineRenderer()
     {
@@ -120,7 +143,7 @@ public class HandController : MonoBehaviour
         canMove = true;
     }
 
-    private void KeepHandInBounds(float minBox, float maxBox)
+    private void KeepObjectInBounds(Transform transform, float minBox, float maxBox)
     {
         if (transform.position.x < minBox)
         {

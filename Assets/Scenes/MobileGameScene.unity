@@ -1488,7 +1488,6 @@ GameObject:
   - component: {fileID: 267649856}
   - component: {fileID: 267649855}
   - component: {fileID: 267649858}
-  - component: {fileID: 267649859}
   m_Layer: 5
   m_Name: Ok Button
   m_TagString: Untagged
@@ -1625,19 +1624,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
---- !u!114 &267649859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 267649853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &277782150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,7 +1834,6 @@ GameObject:
   - component: {fileID: 313757388}
   - component: {fileID: 313757392}
   - component: {fileID: 313757391}
-  - component: {fileID: 313757390}
   - component: {fileID: 313757389}
   m_Layer: 5
   m_Name: Drop Button
@@ -1933,19 +1918,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &313757390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313757387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!114 &313757391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2779,7 +2751,6 @@ GameObject:
   - component: {fileID: 413324494}
   - component: {fileID: 413324493}
   - component: {fileID: 413324492}
-  - component: {fileID: 413324495}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -2901,19 +2872,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413324490}
   m_CullTransparentMesh: 1
---- !u!114 &413324495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413324490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &429238487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2927,7 +2885,6 @@ GameObject:
   - component: {fileID: 429238490}
   - component: {fileID: 429238489}
   - component: {fileID: 429238492}
-  - component: {fileID: 429238493}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -3052,19 +3009,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
---- !u!114 &429238493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429238487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &435713337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,7 +3621,6 @@ GameObject:
   - component: {fileID: 584507773}
   - component: {fileID: 584507772}
   - component: {fileID: 584507775}
-  - component: {fileID: 584507776}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -3826,19 +3769,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
---- !u!114 &584507776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584507770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &646402581
 GameObject:
   m_ObjectHideFlags: 0
@@ -4661,7 +4591,6 @@ GameObject:
   - component: {fileID: 821029376}
   - component: {fileID: 821029375}
   - component: {fileID: 821029378}
-  - component: {fileID: 821029379}
   m_Layer: 5
   m_Name: Replay Button
   m_TagString: Untagged
@@ -4786,19 +4715,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.9858491, b: 0.9858491, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
---- !u!114 &821029379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821029373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &825499918
 GameObject:
   m_ObjectHideFlags: 0
@@ -6026,7 +5942,6 @@ GameObject:
   - component: {fileID: 1011447604}
   - component: {fileID: 1011447603}
   - component: {fileID: 1011447606}
-  - component: {fileID: 1011447607}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -6151,19 +6066,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.9858491, b: 0.9858491, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
---- !u!114 &1011447607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011447601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &1017900579
 GameObject:
   m_ObjectHideFlags: 0
@@ -6177,7 +6079,6 @@ GameObject:
   - component: {fileID: 1017900582}
   - component: {fileID: 1017900581}
   - component: {fileID: 1017900584}
-  - component: {fileID: 1017900585}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -6314,19 +6215,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
---- !u!114 &1017900585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017900579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &1097181718
 GameObject:
   m_ObjectHideFlags: 0
@@ -7642,7 +7530,6 @@ GameObject:
   - component: {fileID: 1358135353}
   - component: {fileID: 1358135352}
   - component: {fileID: 1358135355}
-  - component: {fileID: 1358135356}
   m_Layer: 5
   m_Name: Resume Button
   m_TagString: Untagged
@@ -7779,19 +7666,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
---- !u!114 &1358135356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358135350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &1395900305
 GameObject:
   m_ObjectHideFlags: 0
@@ -8791,6 +8665,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687441251}
   m_CullTransparentMesh: 1
+--- !u!1 &1700209542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1700209544}
+  - component: {fileID: 1700209543}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1700209543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700209542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ed4ce5e4365de14388d6bc1836b29b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1700209544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700209542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 490.33813, y: 254.32588, z: 2.1491404}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1703769045
 GameObject:
   m_ObjectHideFlags: 0
@@ -9244,7 +9162,6 @@ GameObject:
   - component: {fileID: 1793512769}
   - component: {fileID: 1793512768}
   - component: {fileID: 1793512771}
-  - component: {fileID: 1793512772}
   m_Layer: 5
   m_Name: Settings Button
   m_TagString: Untagged
@@ -9393,19 +9310,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 10, y: 10}
   m_UseGraphicAlpha: 1
---- !u!114 &1793512772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1793512766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Touchscreen>/Press
 --- !u!1 &1822719476
 GameObject:
   m_ObjectHideFlags: 0
@@ -10978,3 +10882,4 @@ SceneRoots:
   - {fileID: 514375067}
   - {fileID: 691652153}
   - {fileID: 283799194}
+  - {fileID: 1700209544}
