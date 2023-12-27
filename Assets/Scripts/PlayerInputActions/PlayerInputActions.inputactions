@@ -25,9 +25,9 @@
                 },
                 {
                     "name": "MoveCameraX",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "17e31bf4-808c-447f-96da-0ed7ecbb6ef5",
-                    "expectedControlType": "Touch",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -36,7 +36,7 @@
                     "name": "MoveCameraY",
                     "type": "Value",
                     "id": "1e7af788-524e-41be-9960-1591c871e584",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -85,11 +85,33 @@
                 },
                 {
                     "name": "",
+                    "id": "98822dae-ab32-4116-8fcc-0c0ea3216bea",
+                    "path": "<Touchscreen>/touch1/delta/x",
+                    "interactions": "",
+                    "processors": "Clamp(min=-0.05,max=0.05)",
+                    "groups": "Mobile",
+                    "action": "MoveCameraX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a52d5833-e3b0-418b-8e20-b717646004fe",
                     "path": "<Mouse>/delta/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "MoveCameraY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75761a0c-b662-4866-9f65-ceb8aadeea5e",
+                    "path": "<Touchscreen>/touch1/delta/y",
+                    "interactions": "",
+                    "processors": "Clamp(min=-0.05,max=0.05)",
+                    "groups": "Mobile",
                     "action": "MoveCameraY",
                     "isComposite": false,
                     "isPartOfComposite": false

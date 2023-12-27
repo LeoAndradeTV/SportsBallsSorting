@@ -22,14 +22,6 @@ public class Ball : MonoBehaviour
         Initialize();
     }
 
-    private void Update()
-    {
-        //if (transform.parent != null)
-        //{
-        //    transform.localPosition = Vector3.zero;
-        //}
-    }
-
     private void Initialize()
     {
         _pointsAtCombining = _ballData.pointsAtCombining;
@@ -118,9 +110,7 @@ public class Ball : MonoBehaviour
 
     public void DropBall()
     {
-        //Vector3 dropPosition = transform.parent.position;
-        //ransform.parent = null;
-        //transform.position = dropPosition;
+        transform.parent = null;
         ToggleBall(true);
     }
 

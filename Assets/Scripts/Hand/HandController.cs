@@ -89,33 +89,8 @@ public class HandController : MonoBehaviour
         forward.Normalize();
 
         transform.forward = forward;
-
-        Ball currentHeldBall = handSpawner.GetCurrentBall();
-
-        if (currentHeldBall == null) return;
-        currentHeldBall.transform.position += transform.right * currentPositionX + transform.forward * currentPositionZ;
-        currentHeldBall.transform.forward = forward;
-
-        KeepObjectInBounds(currentHeldBall.transform, minBoxPosition, maxBoxPosition);
         KeepObjectInBounds(transform,minBoxPosition, maxBoxPosition);
     }
-
-    //private void MoveCurrentBall()
-    //{
-    //    Ball currentHeldBall = handSpawner.GetCurrentBall();
-
-    //    if (currentHeldBall == null) return;
-
-    //    currentHeldBall.transform.position += transform.right * currentPositionX + transform.forward * currentPositionZ;
-
-    //    var forward = cameraTransform.forward;
-    //    forward.y = 0f;
-    //    forward.Normalize();
-
-    //    currentHeldBall.transform.forward = forward;
-
-    //    KeepObjectInBounds(currentHeldBall.transform, minBoxPosition, maxBoxPosition);
-    //}
 
     private void SetLineRenderer()
     {

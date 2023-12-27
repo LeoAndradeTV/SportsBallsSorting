@@ -54,8 +54,10 @@ public class HandSpawner : MonoBehaviour
         currentHeldBall = nextBall == null ?
             Instantiate(
                 PickRandomFromArray(possibleBalls),
-                transform.position, Quaternion.identity) :
-                Instantiate(nextBall, transform.position, Quaternion.identity);
+                transform) :
+                Instantiate(nextBall,
+                transform);
+        currentHeldBall.ToggleBall(false);
         SetNextBall();
     }
 

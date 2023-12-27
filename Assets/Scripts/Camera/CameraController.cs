@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     private float mouseX;
     private float mouseY;
     private float cameraSpeed;
-    private bool canMoveCamera;
+    private bool canMoveCamera = true;
 
     private Vector2 screenPosition;
     private Touch touch;
@@ -52,10 +52,11 @@ public class CameraController : MonoBehaviour
     {
         if (!canMoveCamera) return;
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        Debug.Log(inputActions.Player.MoveCameraX.ReadValue<float>());
+        Debug.Log(inputActions.Player.MoveCameraY.ReadValue<float>());
+
         mouseX = inputActions.Player.MoveCameraX.ReadValue<float>() * Time.deltaTime * cameraSpeed;
         mouseY = inputActions.Player.MoveCameraY.ReadValue<float>() * Time.deltaTime * cameraSpeed;
-#endif
 
         mouseX = invertHorizontal ? mouseX * -1 : mouseX;
         mouseY = invertVertical ? mouseY * -1 : mouseY;
