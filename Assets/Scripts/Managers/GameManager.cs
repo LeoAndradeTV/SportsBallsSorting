@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public float MusicVolume { get; private set; }
     public float SfxVolume { get; private set; }
 
+    private IDataService dataService = new JsonDataService();
+
     private void OnEnable()
     {
         if (Instance == null)
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
 
         else
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
 
         LoadMySettings();
@@ -49,7 +51,12 @@ public class GameManager : MonoBehaviour
     public void LoadGameScene()
     {
         CurrentState = GameState.Tutorial;
+#if UNITY_STANDALONE || UNITY_EDITOR
         SceneManager.LoadScene(SceneTypes.GameScene.ToString());
+#endif
+#if UNITY_IOS
+    SceneManager.LoadScene(SceneTypes.MobileGameScene.ToString());
+#endif
     }
 
     public void LoadMenuScene()
@@ -64,25 +71,31 @@ public class GameManager : MonoBehaviour
         settings.cameraSpeed = CameraSpeed;
         settings.musicVolume = MusicVolume;
         settings.sfxVolume = SfxVolume;
-        string data = JsonUtility.ToJson(settings);
+        //string data = JsonUtility.ToJson(settings);
 
-        PlayerPrefs.SetString("settings", data);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetString("settings", data);
+        //PlayerPrefs.Save();
 
-       Debug.Log(PlayerPrefs.GetString("settings"));
+        if (dataService.SaveData("/player-settings.json", settings, false))
+        {
+            Debug.Log($"{settings.handSpeed}, {settings.cameraSpeed}, {settings.musicVolume}, {settings.sfxVolume}");
+        } else
+        {
+            Debug.LogError("Data failed to save");
+        }
     }
 
     public void LoadMySettings()
     {
-        if (!PlayerPrefs.HasKey("settings"))
+        //string data = PlayerPrefs.GetString("settings");
+
+        SaveSettings settings = dataService.LoadData<SaveSettings>("/player-settings.json", false);
+
+        if (settings == null)
         {
             InitDefaultSettings();
             return;
         }
-
-        string data = PlayerPrefs.GetString("settings");
-
-        SaveSettings settings = JsonUtility.FromJson<SaveSettings>(data);
 
         MovementSpeed = settings.handSpeed;
         CameraSpeed = settings.cameraSpeed;

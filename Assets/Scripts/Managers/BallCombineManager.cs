@@ -56,7 +56,7 @@ public class BallCombineManager : MonoBehaviour
 
     private async void ResetRecentCombination()
     {
-        await System.Threading.Tasks.Task.Delay(5);
+        await System.Threading.Tasks.Task.Delay(1);
         hasRecentlyCombined = false;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(LineRenderer))]
 public class HandController : MonoBehaviour
@@ -7,6 +8,7 @@ public class HandController : MonoBehaviour
     [SerializeField] private GameObject settingsMenu;
 
     private float handMoveSpeed;
+    private PlayerInputActions inputActions;
 
     private Transform cameraTransform;
 
@@ -15,7 +17,6 @@ public class HandController : MonoBehaviour
 
     private float minBoxPosition = -4f;
     private float maxBoxPosition = 4f;
-    private const float HAND_Y_POSITION = 15f;
 
     private float horizontal;
     private float vertical;
@@ -29,6 +30,9 @@ public class HandController : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
         cameraTransform = Camera.main.transform;
+        inputActions = new PlayerInputActions();
+        inputActions.Player.Enable();
+        inputActions.Player.Pause.performed += Pause_performed;
     }
 
     private void OnEnable()
@@ -48,12 +52,10 @@ public class HandController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckForPauseInput();
-
         if (GameManager.Instance.CurrentState != GameState.Playing) { return; }
 
         GetInput();
-        MoveHand();
+        MoveHandAndBall();
         SetLineRenderer();
     }
 
@@ -66,11 +68,12 @@ public class HandController : MonoBehaviour
     {
         if (!canMove) return;
 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        horizontal = inputActions.Player.Move.ReadValue<Vector2>().x;
+        vertical = inputActions.Player.Move.ReadValue<Vector2>().y;
+
     }
 
-    private void MoveHand()
+    private void MoveHandAndBall()
     {
         currentPositionX = horizontal * handMoveSpeed * Time.deltaTime;
         currentPositionZ = vertical * handMoveSpeed * Time.deltaTime;
@@ -82,8 +85,7 @@ public class HandController : MonoBehaviour
         forward.Normalize();
 
         transform.forward = forward;
-
-        KeepHandInBounds(minBoxPosition, maxBoxPosition);
+        KeepObjectInBounds(transform,minBoxPosition, maxBoxPosition);
     }
 
     private void SetLineRenderer()
@@ -112,7 +114,7 @@ public class HandController : MonoBehaviour
         canMove = true;
     }
 
-    private void KeepHandInBounds(float minBox, float maxBox)
+    private void KeepObjectInBounds(Transform transform, float minBox, float maxBox)
     {
         if (transform.position.x < minBox)
         {
@@ -132,22 +134,30 @@ public class HandController : MonoBehaviour
         }
     }
 
-    private void CheckForPauseInput()
+    private void Pause_performed(InputAction.CallbackContext obj)
     {
-        if (GameManager.Instance.CurrentState == GameState.Paused && Input.GetKeyUp(KeyCode.Escape))
+        switch (GameManager.Instance.CurrentState)
         {
-            GameManager.Instance.ResumeGame();
-            pauseMenu.SetActive(false);
-            settingsMenu.SetActive(false);
-            GameManager.Instance.SaveMySettings();
-            return;
+            case GameState.Paused:
+                ResumeGame();
+                break;
+            case GameState.Playing:
+                PauseGame();
+                break;
         }
+    }
 
-        if (GameManager.Instance.CurrentState == GameState.Playing && Input.GetKeyUp(KeyCode.Escape))
-        {
-            GameManager.Instance.PauseGame();
-            pauseMenu.SetActive(true);
-            return;
-        }
+    public void PauseGame()
+    {
+        GameManager.Instance.PauseGame();
+        pauseMenu.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        GameManager.Instance.ResumeGame();
+        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        GameManager.Instance.SaveMySettings();
     }
 }
