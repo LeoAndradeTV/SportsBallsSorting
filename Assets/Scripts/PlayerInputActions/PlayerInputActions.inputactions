@@ -52,12 +52,12 @@
                 },
                 {
                     "name": "CameraMoveToggle",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "22c404af-818b-4d57-8966-941871b01325",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold(duration=0.05)",
-                    "initialStateCheck": false
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -86,9 +86,9 @@
                 {
                     "name": "",
                     "id": "98822dae-ab32-4116-8fcc-0c0ea3216bea",
-                    "path": "<Touchscreen>/touch1/delta/x",
+                    "path": "<Touchscreen>/touch0/delta/x",
                     "interactions": "",
-                    "processors": "Clamp(min=-0.05,max=0.05)",
+                    "processors": "Clamp(min=-0.2,max=0.2)",
                     "groups": "Mobile",
                     "action": "MoveCameraX",
                     "isComposite": false,
@@ -108,9 +108,9 @@
                 {
                     "name": "",
                     "id": "75761a0c-b662-4866-9f65-ceb8aadeea5e",
-                    "path": "<Touchscreen>/touch1/delta/y",
+                    "path": "<Touchscreen>/touch0/delta/y",
                     "interactions": "",
-                    "processors": "Clamp(min=-0.05,max=0.05)",
+                    "processors": "Clamp(min=-0.2,max=0.2)",
                     "groups": "Mobile",
                     "action": "MoveCameraY",
                     "isComposite": false,
@@ -131,9 +131,20 @@
                     "name": "",
                     "id": "4cf2bffe-bec0-4971-9b62-526b936ce47f",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.05)",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "CameraMoveToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "091a90c5-7f6c-4675-a2e8-6533452848a5",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "Hold(duration=0.05)",
+                    "processors": "",
+                    "groups": "Mobile",
                     "action": "CameraMoveToggle",
                     "isComposite": false,
                     "isPartOfComposite": false

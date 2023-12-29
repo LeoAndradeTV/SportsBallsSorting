@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     private float mouseX;
     private float mouseY;
     private float cameraSpeed;
-    private bool canMoveCamera = true;
+    private bool canMoveCamera = false;
 
     private Vector2 screenPosition;
     private Touch touch;
@@ -39,8 +39,15 @@ public class CameraController : MonoBehaviour
     private void CameraMoveToggle_performed(InputAction.CallbackContext obj)
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) { return; }
-
-        canMoveCamera = true;
+#if UNITY_IOS
+        Touch touch = Input.GetTouch(0);
+        if (TouchedBox(touch))
+        {
+            canMoveCamera = true;
+            Debug.Log("Can Move Camera!");
+        }
+#endif 
+        //canMoveCamera = true;
     }
 
     private void OnDisable()
@@ -48,12 +55,21 @@ public class CameraController : MonoBehaviour
         GameManager.Instance.OnSettingsChanged -= SetSpeed;
     }
 
+    private bool TouchedBox(Touch touch)
+    {
+        if (touch.position.x > (Screen.width / 4) && touch.position.x < (Screen.width / 4) * 3)
+        {
+            return true;
+        }
+        return false;
+    }
+
     private void Update()
     {
         if (!canMoveCamera) return;
 
-        Debug.Log(inputActions.Player.MoveCameraX.ReadValue<float>());
-        Debug.Log(inputActions.Player.MoveCameraY.ReadValue<float>());
+        //Debug.Log(inputActions.Player.MoveCameraX.ReadValue<float>());
+        //Debug.Log(inputActions.Player.MoveCameraY.ReadValue<float>());
 
         mouseX = inputActions.Player.MoveCameraX.ReadValue<float>() * Time.deltaTime * cameraSpeed;
         mouseY = inputActions.Player.MoveCameraY.ReadValue<float>() * Time.deltaTime * cameraSpeed;

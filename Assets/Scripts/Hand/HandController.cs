@@ -9,7 +9,6 @@ public class HandController : MonoBehaviour
 
     private float handMoveSpeed;
     private PlayerInputActions inputActions;
-    private HandSpawner handSpawner;
 
     private Transform cameraTransform;
 
@@ -18,7 +17,6 @@ public class HandController : MonoBehaviour
 
     private float minBoxPosition = -4f;
     private float maxBoxPosition = 4f;
-    private const float HAND_Y_POSITION = 15f;
 
     private float horizontal;
     private float vertical;
@@ -35,7 +33,6 @@ public class HandController : MonoBehaviour
         inputActions = new PlayerInputActions();
         inputActions.Player.Enable();
         inputActions.Player.Pause.performed += Pause_performed;
-        handSpawner = GetComponent<HandSpawner>();
     }
 
     private void OnEnable()
@@ -59,7 +56,6 @@ public class HandController : MonoBehaviour
 
         GetInput();
         MoveHandAndBall();
-        //MoveCurrentBall();
         SetLineRenderer();
     }
 
