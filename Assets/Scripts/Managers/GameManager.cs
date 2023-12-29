@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     public void LoadGameScene()
     {
         CurrentState = GameState.Tutorial;
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+#if UNITY_STANDALONE || UNITY_EDITOR
         SceneManager.LoadScene(SceneTypes.GameScene.ToString());
 #endif
 #if UNITY_IOS

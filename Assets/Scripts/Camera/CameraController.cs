@@ -39,6 +39,10 @@ public class CameraController : MonoBehaviour
     private void CameraMoveToggle_performed(InputAction.CallbackContext obj)
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) { return; }
+#if UNITY_STANDALONE
+        canMoveCamera = true;
+#endif
+
 #if UNITY_IOS
         Touch touch = Input.GetTouch(0);
         if (TouchedBox(touch))
@@ -46,8 +50,7 @@ public class CameraController : MonoBehaviour
             canMoveCamera = true;
             Debug.Log("Can Move Camera!");
         }
-#endif 
-        //canMoveCamera = true;
+#endif
     }
 
     private void OnDisable()
