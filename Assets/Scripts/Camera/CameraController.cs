@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
     private void CameraMoveToggle_performed(InputAction.CallbackContext obj)
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) { return; }
-#if UNITY_STANDALONE
+#if UNITY_STANDALONE || UNITY_EDITOR   
         canMoveCamera = true;
 #endif
 
