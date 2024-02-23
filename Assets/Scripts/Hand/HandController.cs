@@ -15,8 +15,8 @@ public class HandController : MonoBehaviour
     private float currentPositionX;
     private float currentPositionZ;
 
-    private float minBoxPosition = -4f;
-    private float maxBoxPosition = 4f;
+    private float minBoxPosition = -3.25f;
+    private float maxBoxPosition = 3.25f;
 
     private float horizontal;
     private float vertical;
