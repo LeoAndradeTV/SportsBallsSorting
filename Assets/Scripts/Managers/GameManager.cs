@@ -8,10 +8,13 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
+    public bool UserHasPlayedGame { get; private set; }
+
     public static GameManager Instance { get; private set; }
 
     public Action OnSettingsChanged;
     public Action OnGameOver;
+    public Action OnTutorialClosed;
 
     public GameState CurrentState { get; private set; }
 
@@ -36,7 +39,7 @@ public class GameManager : MonoBehaviour
         }
 
         LoadMySettings();
-
+        OnTutorialClosed += CloseTutorialStartGame;
         CurrentState = GameState.Playing;
     }
 
@@ -50,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadGameScene()
     {
-        CurrentState = GameState.Tutorial;
+        CurrentState = GameState.Playing;
 #if UNITY_STANDALONE || UNITY_EDITOR
         SceneManager.LoadScene(SceneTypes.GameScene.ToString());
 #endif
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour
         settings.cameraSpeed = CameraSpeed;
         settings.musicVolume = MusicVolume;
         settings.sfxVolume = SfxVolume;
+        settings.userHasPlayedGame = UserHasPlayedGame;
         //string data = JsonUtility.ToJson(settings);
 
         //PlayerPrefs.SetString("settings", data);
@@ -101,10 +105,13 @@ public class GameManager : MonoBehaviour
         CameraSpeed = settings.cameraSpeed;
         MusicVolume = settings.musicVolume;
         SfxVolume = settings.sfxVolume;
+        UserHasPlayedGame = settings.userHasPlayedGame;
     }
 
     public void CloseTutorialStartGame()
     {
+        UserHasPlayedGame = true;
+        SaveMySettings();
         CurrentState = GameState.Playing;
     }
 

@@ -5,4 +5,5 @@ public class SaveSettings
     public float cameraSpeed;
     public float musicVolume;
     public float sfxVolume;
+    public bool userHasPlayedGame;
 }
