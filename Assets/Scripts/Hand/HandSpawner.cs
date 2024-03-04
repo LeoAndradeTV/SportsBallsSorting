@@ -65,6 +65,8 @@ public class HandSpawner : MonoBehaviour
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
+        if (currentHeldBall == null) return;
+
         currentHeldBall.DropBall();
         handController.DisableMovement();
 

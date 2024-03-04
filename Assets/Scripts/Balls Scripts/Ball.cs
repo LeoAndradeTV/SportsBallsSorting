@@ -39,6 +39,7 @@ public class Ball : MonoBehaviour
         {
             AudioManager.Instance.PlayGameOverAudio();
             GameManager.Instance.GameOver();
+            Destroy(gameObject);
             return;
         }
         
@@ -110,6 +111,7 @@ public class Ball : MonoBehaviour
 
     public void DropBall()
     {
+        if (transform.parent == null) { return ; }
         transform.parent = null;
         ToggleBall(true);
     }

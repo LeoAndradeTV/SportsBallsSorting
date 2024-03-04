@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1939924083927234839, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
@@ -83,7 +83,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fcb4f1e18c4e8ac4e95651e7cd7ef2d6, type: 2}
+      objectReference: {fileID: 2100000, guid: 0ab9d174ca9e27d4dbdf4aac9d55b0b9, type: 2}
     - target: {fileID: 5750794168858465931, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_Mass
@@ -102,13 +102,13 @@ PrefabInstance:
     - target: {fileID: 8526104042839274661, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_Name
-      value: Pickle Ball
+      value: Cricket Ball
       objectReference: {fileID: 0}
     - target: {fileID: 8787777673358571388, guid: 86ba0459827e8b04abf8a72289935ec2,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 5537664443991612352, guid: 91dc3c7a55bb51149ad0cd85eaa36c62,
+      objectReference: {fileID: -2681238474280193256, guid: 9dcb641db55876c47bb51fe7f9794c18,
         type: 3}
     m_RemovedComponents:
     - {fileID: 6247893916318198103, guid: 86ba0459827e8b04abf8a72289935ec2, type: 3}
@@ -145,5 +145,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.71
-  m_Center: {x: 0, y: -0.15, z: 0}
+  m_Radius: 0.18
+  m_Center: {x: 0, y: 0, z: 0}
