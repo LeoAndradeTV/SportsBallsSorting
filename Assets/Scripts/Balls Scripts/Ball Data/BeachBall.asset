@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BeachBall
   m_EditorClassIdentifier: 
   ballSprite: {fileID: 21300000, guid: 810f6959e2ede5b4c96fdd23aa2bd28e, type: 3}
-  pointsAtCombining: 30
+  pointsAtCombining: 200
   nextBall: {fileID: 7024446229740614951, guid: 07c136c534bfe6c4db97eb521e67a292,
     type: 3}
   ballType: 10

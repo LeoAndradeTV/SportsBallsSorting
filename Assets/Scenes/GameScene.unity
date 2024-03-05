@@ -3697,6 +3697,7 @@ MonoBehaviour:
   - {fileID: 3749839089074554194, guid: 45a36a62fd164ed45a99f93ae73996e5, type: 3}
   - {fileID: 3749839089074554194, guid: 16ed10e52de41764f97a245269b8a702, type: 3}
   nextBallSprite: {fileID: 1279881171}
+  hologramMaterial: {fileID: 2100000, guid: edb3f51d1ebc3ce459ca4617def94b51, type: 2}
 --- !u!114 &677059894
 MonoBehaviour:
   m_ObjectHideFlags: 0

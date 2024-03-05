@@ -17,6 +17,7 @@ public class ScorePopUpManager : MonoBehaviour
     private void PopUpScore(object sender, BallCombineManager.BallToCombineEventArgs e)
     {
         Transform scorePopUp = Instantiate(scorePopUpPrefab, transform);
+        if (scorePopUp == null ) { return; }
         ScorePopUp popUp = scorePopUp.GetComponent<ScorePopUp>();
         popUp.UpdateText(e.ballToCombine.GetBallPoints());
         popUp.SetPosition(e.popUpLocation);

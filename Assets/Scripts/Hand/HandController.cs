@@ -9,6 +9,7 @@ public class HandController : MonoBehaviour
 
     private float handMoveSpeed;
     private PlayerInputActions inputActions;
+    private HandSpawner handSpawner;
 
     private Transform cameraTransform;
 
@@ -30,6 +31,7 @@ public class HandController : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
         cameraTransform = Camera.main.transform;
+        handSpawner = GetComponent<HandSpawner>();
         inputActions = new PlayerInputActions();
         inputActions.Player.Enable();
         inputActions.Player.Pause.performed += Pause_performed;
@@ -95,11 +97,18 @@ public class HandController : MonoBehaviour
         Vector3 secondLinePosition = new Vector3(transform.position.x, 0, transform.position.z);
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit info, 1000f))
         {
-            secondLinePosition = info.point;
+            if (handSpawner.GetCurrentHologram() != null)
+            {
+                secondLinePosition = info.point + handSpawner.GetCurrentBallRadius();
+                handSpawner.GetCurrentHologram().transform.position = secondLinePosition;
+            }
+            
         }
 
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, secondLinePosition);
+
+        
     }
 
     public void DisableMovement()

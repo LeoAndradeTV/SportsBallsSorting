@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PoolBall
   m_EditorClassIdentifier: 
   ballSprite: {fileID: 21300000, guid: 39a7e849f45159248afddd0a504ed0e1, type: 3}
-  pointsAtCombining: 10
+  pointsAtCombining: 8
   nextBall: {fileID: 3749839089074554194, guid: 45a36a62fd164ed45a99f93ae73996e5,
     type: 3}
   ballType: 4

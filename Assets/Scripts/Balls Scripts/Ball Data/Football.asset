@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Football
   m_EditorClassIdentifier: 
   ballSprite: {fileID: 21300000, guid: bbb45285bc485c146895899cd89375ff, type: 3}
-  pointsAtCombining: 20
+  pointsAtCombining: 50
   nextBall: {fileID: 3749839089074554194, guid: 044cf7646939c99429788ecb7a7195bc,
     type: 3}
   ballType: 8
