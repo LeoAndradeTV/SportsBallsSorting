@@ -46,6 +46,8 @@ public class HandController : MonoBehaviour
     {
         ActionsManager.BallHasCollided -= EnableMovement;
         GameManager.Instance.OnSettingsChanged -= SetSpeed;
+        inputActions.Player.Pause.performed -= Pause_performed;
+
 
     }
 
@@ -150,7 +152,11 @@ public class HandController : MonoBehaviour
     public void PauseGame()
     {
         GameManager.Instance.PauseGame();
-        pauseMenu.SetActive(true);
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(true);
+
+        }
     }
 
     public void ResumeGame()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class ScoreManager : MonoBehaviour
     private int score;
     private IDataService dataService = new JsonDataService();
     private int highScore;
+
+    
 
     public int HighScore
     {
@@ -38,13 +41,20 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void Start()
     {
         if (Instance == null)
             Instance = this;
 
         Score = 0;
         LoadHighScore();
+
+        BallCombineManager.Instance.OnBallCombined += AddToScore;
+    }
+
+    private void AddToScore(object sender, BallCombineManager.BallToCombineEventArgs e)
+    {
+        Score += e.ballToCombine.GetBallPoints();
     }
 
     public void SaveHighScore()

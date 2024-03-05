@@ -27,6 +27,7 @@ public class GameSceneSliders : MonoBehaviour
         musicVolumeSlider.onValueChanged.AddListener(GameManager.Instance.SetMusicVolume);
         sfxVolumeSlider.onValueChanged.AddListener(GameManager.Instance.SetSFXVolume);
         backButton.onClick.AddListener(GameManager.Instance.SaveMySettings);
+        backButton.onClick.AddListener(GameManager.Instance.ResumeGame);
 
     }
 
@@ -37,5 +38,6 @@ public class GameSceneSliders : MonoBehaviour
         cameraSlider.onValueChanged.RemoveListener(GameManager.Instance.SetCameraSpeed);
         musicVolumeSlider.onValueChanged.RemoveListener(GameManager.Instance.SetMusicVolume);
         sfxVolumeSlider.onValueChanged.RemoveListener(GameManager.Instance.SetSFXVolume);
+        backButton.onClick.RemoveAllListeners();
     }
 }

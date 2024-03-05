@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void OnEnable()
+    void Start()
     {
         if (Instance == null)
         {
@@ -28,8 +28,15 @@ public class AudioManager : MonoBehaviour
         }
 
         GameManager.Instance.OnSettingsChanged += SetVolume;
+        BallCombineManager.Instance.OnBallCombined += PlayCombineAudio;
         SetVolume();
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnSettingsChanged -= SetVolume;
+        BallCombineManager.Instance.OnBallCombined -= PlayCombineAudio;
     }
 
     private void SetVolume()
@@ -38,7 +45,7 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void PlayCombineAudio()
+    public void PlayCombineAudio(object sender, System.EventArgs e)
     {
         audioSource.volume = sfxVolume;
         audioSource.PlayOneShot(audioCombine);
