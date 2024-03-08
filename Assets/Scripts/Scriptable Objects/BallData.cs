@@ -10,6 +10,7 @@ public class BallData : ScriptableObject
     public Ball nextBall;
     public BallType ballType;
     public ParticleSystem particleSystem;
+    public Color backgroundColor;
 
     // TODO:
     // Add audio clip

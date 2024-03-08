@@ -8,6 +8,7 @@ public class HandSpawner : MonoBehaviour
 {
     [SerializeField] private Ball[] possibleBalls;
     [SerializeField] private Image nextBallSprite;
+    [SerializeField] private Image nextBallColor;
     [SerializeField] private Material hologramMaterial;
 
     private PlayerInputActions inputActions;
@@ -48,6 +49,7 @@ public class HandSpawner : MonoBehaviour
     {
         Ball nextBall = PickRandomFromArray(possibleBalls);
         nextBallSprite.sprite = nextBall.GetBallSprite();
+        nextBallColor.color = nextBall.GetNextBallColor();
         this.nextBall = nextBall;
     }
 

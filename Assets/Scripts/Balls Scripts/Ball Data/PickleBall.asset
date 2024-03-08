@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: PickleBall
   m_EditorClassIdentifier: 
-  ballSprite: {fileID: 21300000, guid: 3376d21b535fd424cb0969d2cd6aea3d, type: 3}
+  ballSprite: {fileID: 21300000, guid: 31236c2c5a988594aa89f9e3eb9fd322, type: 3}
   pointsAtCombining: 12
   nextBall: {fileID: 3749839089074554194, guid: dac1817f57c09a2459120b92d5a337d3,
     type: 3}
   ballType: 3
   particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
     type: 3}
+  backgroundColor: {r: 0.79215693, g: 0.47450984, b: 0.34509805, a: 0}

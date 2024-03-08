@@ -14,7 +14,7 @@ public class ScorePopUp : MonoBehaviour
         scoreText.text = "+" + score;
     }
 
-    public async void Disappear()
+    public IEnumerator Disappear()
     {
         Vector3 startPos = transform.position;
         Vector3 endPos = transform.position + amountToMoveUp;
@@ -27,10 +27,9 @@ public class ScorePopUp : MonoBehaviour
             transform.position = Vector3.Lerp(startPos, endPos, currentTime/maxTime);
             GetComponent<TMP_Text>().color = Color.Lerp(textColor, transparent, currentTime/maxTime);
             currentTime += Time.deltaTime;
-            await Task.Yield();
+            yield return null;
         }
         Destroy(gameObject);
-        
     }
     public void SetPosition(Vector3 position)
     {

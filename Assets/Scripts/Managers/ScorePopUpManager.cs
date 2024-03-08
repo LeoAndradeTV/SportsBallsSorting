@@ -21,6 +21,6 @@ public class ScorePopUpManager : MonoBehaviour
         ScorePopUp popUp = scorePopUp.GetComponent<ScorePopUp>();
         popUp.UpdateText(e.ballToCombine.GetBallPoints());
         popUp.SetPosition(e.popUpLocation);
-        popUp.Disappear();
+        StartCoroutine(popUp.Disappear());
     }
 }

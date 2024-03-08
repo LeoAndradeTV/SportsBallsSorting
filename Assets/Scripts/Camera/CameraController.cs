@@ -58,15 +58,6 @@ public class CameraController : MonoBehaviour
         GameManager.Instance.OnSettingsChanged -= SetSpeed;
     }
 
-    private bool TouchedBox(Touch touch)
-    {
-        if (touch.position.x > (Screen.width / 4) && touch.position.x < (Screen.width / 4) * 3)
-        {
-            return true;
-        }
-        return false;
-    }
-
     private void Update()
     {
         if (!canMoveCamera) return;

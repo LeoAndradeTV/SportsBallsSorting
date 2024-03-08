@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: SoccerBall
   m_EditorClassIdentifier: 
-  ballSprite: {fileID: 21300000, guid: 2cbc74436050f6f4bb7b4ead6ebe9b2d, type: 3}
+  ballSprite: {fileID: 21300000, guid: b6fd86c332b531a4681c8fd2d9e54639, type: 3}
   pointsAtCombining: 20
   nextBall: {fileID: 3749839089074554194, guid: ef2ac92543e862348b72d76c2d27319f,
     type: 3}
   ballType: 6
   particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
     type: 3}
+  backgroundColor: {r: 0.73333335, g: 0.6862745, b: 0.20000002, a: 0}

@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
     private BallType _ballType;
     private bool hasCollided;
     private ParticleSystem _particleSystem;
+    private Color _ballColor;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -28,6 +29,7 @@ public class Ball : MonoBehaviour
         _nextBall = _ballData.nextBall;
         _ballType = _ballData.ballType;
         _particleSystem = _ballData.particleSystem;
+        _ballColor = _ballData.backgroundColor;
         _rb = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
     }
@@ -86,6 +88,11 @@ public class Ball : MonoBehaviour
     public Ball GetNextBall()
     {
         return _nextBall;
+    }
+
+    public Color GetNextBallColor()
+    {
+        return _ballColor;
     }
 
     public int GetBallPoints()

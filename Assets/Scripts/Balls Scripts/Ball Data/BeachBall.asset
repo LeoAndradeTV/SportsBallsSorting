@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: BeachBall
   m_EditorClassIdentifier: 
-  ballSprite: {fileID: 21300000, guid: 810f6959e2ede5b4c96fdd23aa2bd28e, type: 3}
+  ballSprite: {fileID: 21300000, guid: 7e4692c73ec7e3747ad35c0a6db6a271, type: 3}
   pointsAtCombining: 200
   nextBall: {fileID: 7024446229740614951, guid: 07c136c534bfe6c4db97eb521e67a292,
     type: 3}
   ballType: 10
   particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
     type: 3}
+  backgroundColor: {r: 0.7607844, g: 0.43137258, b: 0.37254903, a: 0}

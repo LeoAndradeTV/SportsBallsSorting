@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: Basketball
   m_EditorClassIdentifier: 
-  ballSprite: {fileID: 21300000, guid: 59bd3793d27c8684f88a976885b3d091, type: 3}
+  ballSprite: {fileID: 21300000, guid: f79c0319ee3f51e478a034d78144a876, type: 3}
   pointsAtCombining: 100
   nextBall: {fileID: 3749839089074554194, guid: 584f978ebdd018947b461d64fcf54629,
     type: 3}
   ballType: 9
   particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
     type: 3}
+  backgroundColor: {r: 0.6431373, g: 0.36078432, b: 0.8745099, a: 0}

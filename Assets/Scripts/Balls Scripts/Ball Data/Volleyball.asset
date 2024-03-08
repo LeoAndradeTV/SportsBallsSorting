@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: Volleyball
   m_EditorClassIdentifier: 
-  ballSprite: {fileID: 21300000, guid: b75292f0b6746104cbc32a98d8a8699e, type: 3}
+  ballSprite: {fileID: 21300000, guid: 738ce2359e6b4f94ea0e8c01f9f97a5d, type: 3}
   pointsAtCombining: 15
   nextBall: {fileID: 3749839089074554194, guid: ee5a57dbafe964a4cabed20229140309,
     type: 3}
   ballType: 5
   particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
     type: 3}
+  backgroundColor: {r: 0.4901961, g: 0.52156866, b: 0.89019614, a: 0}
