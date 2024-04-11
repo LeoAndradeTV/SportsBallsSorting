@@ -62,9 +62,6 @@ public class CameraController : MonoBehaviour
     {
         if (!canMoveCamera) return;
 
-        //Debug.Log(inputActions.Player.MoveCameraX.ReadValue<float>());
-        //Debug.Log(inputActions.Player.MoveCameraY.ReadValue<float>());
-
         mouseX = inputActions.Player.MoveCameraX.ReadValue<float>() * Time.deltaTime * cameraSpeed;
         mouseY = inputActions.Player.MoveCameraY.ReadValue<float>() * Time.deltaTime * cameraSpeed;
 

@@ -49,7 +49,7 @@ public class HandSpawner : MonoBehaviour
     {
         Ball nextBall = PickRandomFromArray(possibleBalls);
         nextBallSprite.sprite = nextBall.GetBallSprite();
-        nextBallColor.color = nextBall.GetNextBallColor();
+        nextBallColor.color = nextBall.GetBallData().backgroundColor;
         this.nextBall = nextBall;
     }
 

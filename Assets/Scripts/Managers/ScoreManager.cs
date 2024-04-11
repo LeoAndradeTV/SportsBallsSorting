@@ -1,3 +1,5 @@
+using Steamworks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,11 +13,11 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text highscoreText;
 
-    private int score;
-    private IDataService dataService = new JsonDataService();
+    [SerializeField] private int score;
     private int highScore;
 
-    
+    private CallResult<LeaderboardFindResult_t> leaderboardResult;
+    SteamLeaderboard_t leaderboardHandle;
 
     public int HighScore
     {
@@ -41,6 +43,28 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        if (SteamManager.Initialized)
+        {
+            leaderboardResult = CallResult<LeaderboardFindResult_t>.Create(OnFindLeaderboard);
+            var leaderboard = SteamUserStats.FindLeaderboard("Ball Blitz Highscore");
+            leaderboardResult.Set(leaderboard);
+        }
+    }
+
+    private void OnFindLeaderboard(LeaderboardFindResult_t param, bool bIOFailure)
+    {
+        if (param.m_bLeaderboardFound != 1 || bIOFailure)
+        {
+            
+        } else
+        {
+            leaderboardHandle = param.m_hSteamLeaderboard;
+        }
+
+    }
+
     private void Start()
     {
         if (Instance == null)
@@ -61,17 +85,22 @@ public class ScoreManager : MonoBehaviour
     {
         if (Score < HighScore) { return; }
 
-        if (dataService.SaveData("/player-highscore.json", Score, false))
-        {
+        if (!SteamManager.Initialized) { return; }
 
-        } else
-        {
-            Debug.LogError("Data failed to save");
-        }
+        SteamUserStats.SetStat("HIGHSCORE", Score);
+        SteamUserStats.StoreStats();
+
+        LoadHighScore();
+
+         SteamUserStats.UploadLeaderboardScore(leaderboardHandle, ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodForceUpdate, HighScore, new int[0], 0);
+        
     }
 
     public void LoadHighScore()
     {
-        HighScore = dataService.LoadData<int>("/player-highscore.json", false);
+        if (!SteamManager.Initialized) { return; }
+
+        SteamUserStats.GetStat("HIGHSCORE", out int highscore);
+        HighScore = highscore;
     }
 }

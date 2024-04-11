@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: PoolBall
   m_EditorClassIdentifier: 
-  ballSprite: {fileID: 21300000, guid: 246edef9de33de04daf79e3bcb866982, type: 3}
+  ballSprite: {fileID: 21300000, guid: 05bc29a51f447f046ab0a76b07108a02, type: 3}
   pointsAtCombining: 8
   nextBall: {fileID: 3749839089074554194, guid: 45a36a62fd164ed45a99f93ae73996e5,
     type: 3}
   ballType: 4
   particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
     type: 3}
-  backgroundColor: {r: 0.83921576, g: 0.67058825, b: 0.3803922, a: 0}
+  backgroundColor: {r: 0.9686275, g: 0.80392164, b: 0.4039216, a: 1}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: Marble
   m_EditorClassIdentifier: 
-  ballSprite: {fileID: 21300000, guid: 1c4e4d6da4ce8d94aa9221613d967495, type: 3}
+  ballSprite: {fileID: 21300000, guid: 2d8b271e382d8ab43856f992892ef00f, type: 3}
   pointsAtCombining: 1
   nextBall: {fileID: 7024446229740614951, guid: 07c136c534bfe6c4db97eb521e67a292,
     type: 3}
   ballType: 0
   particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
     type: 3}
-  backgroundColor: {r: 0.8117648, g: 0.54509807, b: 0.6862745, a: 0}
+  backgroundColor: {r: 0.9725491, g: 0.6509804, b: 0.69803923, a: 1}

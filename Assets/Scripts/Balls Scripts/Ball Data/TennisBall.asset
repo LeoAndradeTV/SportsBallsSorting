@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: TennisBall
   m_EditorClassIdentifier: 
-  ballSprite: {fileID: 21300000, guid: 0143717e658834941b2c34ae1a1b000a, type: 3}
+  ballSprite: {fileID: 21300000, guid: 5bf8a6cef2349e848bdb51a41d002738, type: 3}
   pointsAtCombining: 5
   nextBall: {fileID: 3749839089074554194, guid: 16ed10e52de41764f97a245269b8a702,
     type: 3}
   ballType: 2
   particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
     type: 3}
-  backgroundColor: {r: 0.5176471, g: 0.65882355, b: 0.5372549, a: 0}
+  backgroundColor: {r: 0.5411765, g: 0.77647066, b: 0.5411765, a: 1}

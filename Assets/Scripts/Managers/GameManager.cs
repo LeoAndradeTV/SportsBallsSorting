@@ -80,10 +80,10 @@ public class GameManager : MonoBehaviour
 
         if (dataService.SaveData("/player-settings.json", settings, false))
         {
-            Debug.Log($"{settings.handSpeed}, {settings.cameraSpeed}, {settings.musicVolume}, {settings.sfxVolume}");
+            
         } else
         {
-            Debug.LogError("Data failed to save");
+            
         }
     }
 
@@ -132,7 +132,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Game Over!");
         ScoreManager.Instance.SaveHighScore();
         CurrentState = GameState.Paused;
         Time.timeScale = 0;

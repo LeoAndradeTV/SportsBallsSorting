@@ -85,6 +85,16 @@ public class Ball : MonoBehaviour
         BallCombineManager.Instance.Combine(collision.contacts[0].point);
     }
 
+    public BallData GetBallData()
+    {
+        return _ballData;
+    }
+
+    public BallType GetBallType()
+    {
+        return _ballType;
+    }
+
     public Ball GetNextBall()
     {
         return _nextBall;

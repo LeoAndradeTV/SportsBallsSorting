@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa5dd19ff6cf443b19231c274ee9f0, type: 3}
   m_Name: GolfBall
   m_EditorClassIdentifier: 
-  ballSprite: {fileID: 21300000, guid: ec33ef06f945bc141b5faab510991f4f, type: 3}
+  ballSprite: {fileID: 21300000, guid: 10f5c7f761e92b54594d6dc4f6f2a83a, type: 3}
   pointsAtCombining: 2
   nextBall: {fileID: 7024446229740614951, guid: 3e406bebc85161344b373c21aba39d81,
     type: 3}
   ballType: 1
   particleSystem: {fileID: 4909181168946295745, guid: 62334a566bbfe3945bc7bd0c02ca1c9e,
     type: 3}
-  backgroundColor: {r: 0.82745105, g: 0.33333334, b: 0.36862746, a: 0}
+  backgroundColor: {r: 0.98823535, g: 0.45098042, b: 0.427451, a: 1}

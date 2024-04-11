@@ -36,7 +36,7 @@ public class JsonDataService : IDataService
 
         if (!File.Exists(path))
         {
-            Debug.Log("Nothing Saved Yet");
+            
         }
 
         try
@@ -46,7 +46,6 @@ public class JsonDataService : IDataService
         }
         catch (Exception e)
         {
-            Debug.LogError(e.Message);
             throw e;
         }
     }
