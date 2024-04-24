@@ -36,7 +36,13 @@ public class JsonDataService : IDataService
 
         if (!File.Exists(path))
         {
-            
+            SaveSettings settings = new SaveSettings();
+            settings.handSpeed = 80;
+            settings.cameraSpeed = 20;
+            settings.musicVolume = 50;
+            settings.sfxVolume = 50;
+            SaveData("/player-settings.json",
+                settings, false);
         }
 
         try

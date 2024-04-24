@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System;
 using JetBrains.Annotations;
 using System.IO;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,8 +46,8 @@ public class GameManager : MonoBehaviour
 
     private void InitDefaultSettings()
     {
-        SetMovementSpeed(50f);
-        SetCameraSpeed(50f);
+        SetMovementSpeed(80f);
+        SetCameraSpeed(20f);
         SetMusicVolume(50f);
         SetSFXVolume(50f);
     }
@@ -92,12 +93,6 @@ public class GameManager : MonoBehaviour
         //string data = PlayerPrefs.GetString("settings");
 
         SaveSettings settings = dataService.LoadData<SaveSettings>("/player-settings.json", false);
-
-        if (settings == null)
-        {
-            InitDefaultSettings();
-            return;
-        }
 
         MovementSpeed = settings.handSpeed;
         CameraSpeed = settings.cameraSpeed;
