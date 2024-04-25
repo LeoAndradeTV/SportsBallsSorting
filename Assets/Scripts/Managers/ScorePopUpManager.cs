@@ -32,6 +32,7 @@ public class ScorePopUpManager : MonoBehaviour
 
     private void HidePopUps()
     {
+        if (popUpHolder == null) { return; }
         popUpHolder.gameObject.SetActive(false);
     }
 }

@@ -41,19 +41,9 @@ public class GameOverMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        replayButton.onClick.RemoveListener(() =>
-        {
-            GameManager.Instance.LoadGameScene();
-            Time.timeScale = 1.0f;
-            Hide();
-        });
+        replayButton.onClick.RemoveAllListeners();
 
-        quitButton.onClick.RemoveListener(() =>
-        {
-            GameManager.Instance.LoadMenuScene();
-            Time.timeScale = 1.0f;
-            Hide();
-        });
+        quitButton.onClick.RemoveAllListeners();
     }
 
     private void Hide()
