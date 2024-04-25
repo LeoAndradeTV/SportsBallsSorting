@@ -44,7 +44,7 @@ public class Ball : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
+
         // Adds tiny random force so balls can't stack
         GetComponent<Rigidbody>().AddForce(GetRandomForce());
 
@@ -63,7 +63,7 @@ public class Ball : MonoBehaviour
             return;
         }
 
-        // If the first collision is a ball but not of the same type
+        //If the first collision is a ball but not of the same type
         if (collidingBall._ballType != _ballType)
         {
             if (!hasCollided)
@@ -80,6 +80,18 @@ public class Ball : MonoBehaviour
             ActionsManager.BallHasCollided?.Invoke();
             SetHasCollided();
         }
+
+        BallCombineManager.Instance.AddToBallsList(this);
+        BallCombineManager.Instance.Combine(collision.contacts[0].point);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        Ball collidingBall = collision.gameObject.GetComponent<Ball>();
+
+        if (collision.collider.CompareTag("Floor")) return;
+        if (collidingBall == null) return;
+        if (collidingBall._ballType != _ballType) return;
 
         BallCombineManager.Instance.AddToBallsList(this);
         BallCombineManager.Instance.Combine(collision.contacts[0].point);
@@ -128,7 +140,7 @@ public class Ball : MonoBehaviour
 
     public void DropBall()
     {
-        if (transform.parent == null) { return ; }
+        if (transform.parent == null) { return; }
         transform.parent = null;
         ToggleBall(true);
     }
@@ -136,7 +148,7 @@ public class Ball : MonoBehaviour
     public void ToggleBall(bool toggle)
     {
         _rb.useGravity = toggle;
-        _collider.enabled = toggle;
+        _collider.isTrigger = !toggle;
     }
 
     private Vector3 GetRandomForce()

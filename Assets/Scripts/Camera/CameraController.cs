@@ -80,6 +80,6 @@ public class CameraController : MonoBehaviour
 
     private void SetSpeed()
     {
-        cameraSpeed = GameManager.Instance.CameraSpeed * 10f;
+        cameraSpeed = GameManager.Instance.CameraSpeed * 2f;
     }
 }

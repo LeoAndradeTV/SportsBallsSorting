@@ -62,25 +62,25 @@ public class HandSpawner : MonoBehaviour
                 Instantiate(nextBall,
                 transform);
         currentHeldBall.ToggleBall(false);
-        InstantiateHologram(currentHeldBall);
+        //InstantiateHologram(currentHeldBall);
         SetNextBall();
     }
 
-    private void InstantiateHologram(Ball heldBall)
-    {
-        currentBallHologram = Instantiate(heldBall, transform);
-        currentBallHologram.ToggleBall(false);
-        currentBallHologram.GetComponent<MeshRenderer>().material = hologramMaterial;
-    }
+    //private void InstantiateHologram(Ball heldBall)
+    //{
+    //    currentBallHologram = Instantiate(heldBall, transform);
+    //    currentBallHologram.ToggleBall(false);
+    //    currentBallHologram.GetComponent<MeshRenderer>().material = hologramMaterial;
+    //}
 
     public void DropBall()
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
-        if (currentHeldBall == null || currentBallHologram == null) return;
+        if (currentHeldBall == null) return;
 
         currentHeldBall.DropBall();
-        Destroy(currentBallHologram.gameObject);
+        //Destroy(currentBallHologram.gameObject);
         handController.DisableMovement();
 
     }
@@ -97,7 +97,7 @@ public class HandSpawner : MonoBehaviour
 
     public Vector3 GetCurrentBallRadius()
     {
-        float radius = currentBallHologram.GetComponent<SphereCollider>().radius * currentBallHologram.transform.localScale.y;
+        float radius = currentHeldBall.GetComponent<SphereCollider>().radius * currentHeldBall.transform.localScale.y;
         return new Vector3(0, radius, 0);
     }
 }

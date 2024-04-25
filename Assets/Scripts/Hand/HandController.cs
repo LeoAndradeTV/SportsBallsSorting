@@ -16,8 +16,8 @@ public class HandController : MonoBehaviour
     private float currentPositionX;
     private float currentPositionZ;
 
-    private float minBoxPosition = -3.5f;
-    private float maxBoxPosition = 3.5f;
+    private float minBoxPosition = -4.2f;
+    private float maxBoxPosition = 4.2f;
 
     private float horizontal;
     private float vertical;
@@ -65,7 +65,7 @@ public class HandController : MonoBehaviour
 
     private void SetSpeed()
     {
-        handMoveSpeed = GameManager.Instance.MovementSpeed / 15f;
+        handMoveSpeed = GameManager.Instance.MovementSpeed / 7f;
     }
 
     private void GetInput()
@@ -89,7 +89,7 @@ public class HandController : MonoBehaviour
         forward.Normalize();
 
         transform.forward = forward;
-        KeepObjectInBounds(transform,minBoxPosition, maxBoxPosition);
+        KeepObjectInBounds(transform, minBoxPosition, maxBoxPosition, handSpawner.GetCurrentBallRadius().y);
     }
 
     private void SetLineRenderer()
@@ -97,18 +97,11 @@ public class HandController : MonoBehaviour
         Vector3 secondLinePosition = new Vector3(transform.position.x, 0, transform.position.z);
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit info, 1000f))
         {
-            if (handSpawner.GetCurrentHologram() != null)
-            {
-                secondLinePosition = info.point + handSpawner.GetCurrentBallRadius();
-                handSpawner.GetCurrentHologram().transform.position = secondLinePosition;
-            }
-            
+            secondLinePosition = info.point;
         }
 
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, secondLinePosition);
-
-        
     }
 
     public void DisableMovement()
@@ -125,23 +118,23 @@ public class HandController : MonoBehaviour
         canMove = true;
     }
 
-    private void KeepObjectInBounds(Transform transform, float minBox, float maxBox)
+    private void KeepObjectInBounds(Transform transform, float minBox, float maxBox, float currentBallRadius)
     {
-        if (transform.position.x < minBox)
+        if (transform.position.x < minBox + currentBallRadius)
         {
-            transform.position = new Vector3(minBox, transform.position.y, transform.position.z);
+            transform.position = new Vector3(minBox + currentBallRadius, transform.position.y, transform.position.z);
         }
-        if (transform.position.x > maxBox)
+        if (transform.position.x > maxBox - currentBallRadius)
         {
-            transform.position = new Vector3(maxBox, transform.position.y, transform.position.z);
+            transform.position = new Vector3(maxBox - currentBallRadius, transform.position.y, transform.position.z);
         }
-        if (transform.position.z < minBox)
+        if (transform.position.z < minBox + currentBallRadius)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, minBox);
+            transform.position = new Vector3(transform.position.x, transform.position.y, minBox + currentBallRadius);
         }
-        if (transform.position.z > maxBox)
+        if (transform.position.z > maxBox - currentBallRadius)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, maxBox);
+            transform.position = new Vector3(transform.position.x, transform.position.y, maxBox - currentBallRadius);
         }
     }
 
