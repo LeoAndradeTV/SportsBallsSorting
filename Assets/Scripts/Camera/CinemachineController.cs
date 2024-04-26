@@ -59,7 +59,7 @@ public class CinemachineController : MonoBehaviour
 
     private void ResetCameraMovement()
     {
-        cinemachine.m_XAxis.m_MaxSpeed = GameManager.Instance.CameraSpeed * 5;
-        cinemachine.m_YAxis.m_MaxSpeed = GameManager.Instance.CameraSpeed / 20;
+        cinemachine.m_XAxis.m_MaxSpeed = GameManager.Instance.CameraSpeed / 15;
+        cinemachine.m_YAxis.m_MaxSpeed = GameManager.Instance.CameraSpeed / 15;
     }
 }

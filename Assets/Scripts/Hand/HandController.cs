@@ -63,6 +63,11 @@ public class HandController : MonoBehaviour
         SetLineRenderer();
     }
 
+    private void LateUpdate()
+    {
+        RotateHand();
+    }
+
     private void SetSpeed()
     {
         handMoveSpeed = GameManager.Instance.MovementSpeed / 7f;
@@ -83,13 +88,17 @@ public class HandController : MonoBehaviour
         currentPositionZ = vertical * handMoveSpeed * Time.deltaTime;
 
         transform.position += transform.right * currentPositionX + transform.forward * currentPositionZ;
+       
+        KeepObjectInBounds(transform, minBoxPosition, maxBoxPosition, handSpawner.GetCurrentBallRadius().y);
+    }
 
+    private void RotateHand()
+    {
         var forward = cameraTransform.forward;
         forward.y = 0f;
         forward.Normalize();
 
         transform.forward = forward;
-        KeepObjectInBounds(transform, minBoxPosition, maxBoxPosition, handSpawner.GetCurrentBallRadius().y);
     }
 
     private void SetLineRenderer()
