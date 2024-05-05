@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        ScoreManager.Instance.SaveHighScore();
+        ScoreManager.Instance.UploadToLeaderboard();
         CurrentState = GameState.Paused;
         Time.timeScale = 0;
         OnGameOver?.Invoke();

@@ -22,8 +22,8 @@ public class ScoreManager : MonoBehaviour
     public int HighScore
     {
         get { return highScore; }
-        set 
-        { 
+        set
+        {
             highScore = value;
             highscoreText.text = highScore.ToString();
         }
@@ -32,12 +32,13 @@ public class ScoreManager : MonoBehaviour
     public int Score
     {
         get { return score; }
-        set 
-        { 
-            score = value; 
+        set
+        {
+            score = value;
             scoreText.text = score.ToString();
-            if (Score > HighScore)
+            if (score > HighScore)
             {
+                HighScore = score;
                 SaveHighScore();
             }
         }
@@ -47,8 +48,9 @@ public class ScoreManager : MonoBehaviour
     {
         if (SteamManager.Initialized)
         {
-            leaderboardResult = CallResult<LeaderboardFindResult_t>.Create(OnFindLeaderboard);
             var leaderboard = SteamUserStats.FindLeaderboard("Ball Blitz Highscore");
+
+            leaderboardResult = CallResult<LeaderboardFindResult_t>.Create(OnFindLeaderboard);
             leaderboardResult.Set(leaderboard);
         }
     }
@@ -57,10 +59,12 @@ public class ScoreManager : MonoBehaviour
     {
         if (param.m_bLeaderboardFound != 1 || bIOFailure)
         {
-            
-        } else
+
+        }
+        else
         {
             leaderboardHandle = param.m_hSteamLeaderboard;
+            UploadToLeaderboard();
         }
 
     }
@@ -71,9 +75,19 @@ public class ScoreManager : MonoBehaviour
             Instance = this;
 
         Score = 0;
+
+        //For Debugging Only
+        //ResetMyHighscore();
+
         LoadHighScore();
+        Debug.Log(HighScore);
 
         BallCombineManager.Instance.OnBallCombined += AddToScore;
+    }
+
+    private void OnDisable()
+    {
+        BallCombineManager.Instance.OnBallCombined -= AddToScore;
     }
 
     private void AddToScore(object sender, BallCombineManager.BallToCombineEventArgs e)
@@ -83,24 +97,37 @@ public class ScoreManager : MonoBehaviour
 
     public void SaveHighScore()
     {
-        if (Score < HighScore) { return; }
-
         if (!SteamManager.Initialized) { return; }
+
+        // Update the local high score if the current score is higher
 
         SteamUserStats.SetStat("HIGHSCORE", Score);
         SteamUserStats.StoreStats();
 
-        LoadHighScore();
-
-         SteamUserStats.UploadLeaderboardScore(leaderboardHandle, ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodForceUpdate, HighScore, new int[0], 0);
-        
     }
 
-    public void LoadHighScore()
+    public void UploadToLeaderboard()
     {
         if (!SteamManager.Initialized) { return; }
 
+        SteamUserStats.UploadLeaderboardScore(leaderboardHandle, ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodForceUpdate, LoadHighScore(), new int[0], 0);
+    }
+
+    public int LoadHighScore()
+    {
+        if (!SteamManager.Initialized) { return 0; }
+
         SteamUserStats.GetStat("HIGHSCORE", out int highscore);
         HighScore = highscore;
+        return highscore;
+    }
+
+    // For Debuggin Only
+    private void ResetMyHighscore()
+    {
+        if (!SteamManager.Initialized) { return; }
+
+        SteamUserStats.SetStat("HIGHSCORE", 0);
+        SteamUserStats.StoreStats();
     }
 }
