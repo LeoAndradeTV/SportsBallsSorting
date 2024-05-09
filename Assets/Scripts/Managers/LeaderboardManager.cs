@@ -1,8 +1,5 @@
 using Steamworks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class LeaderboardManager : MonoBehaviour
 {
@@ -16,8 +13,6 @@ public class LeaderboardManager : MonoBehaviour
     LeaderboardEntry_t leaderboardEntry;
     LeaderboardScoresDownloaded_t leaderboardScoresDownloaded;
 
-    private int entries;
-
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -28,8 +23,6 @@ public class LeaderboardManager : MonoBehaviour
             leaderboardResult = CallResult<LeaderboardFindResult_t>.Create(OnFindLeaderboard);
 
             leaderboardResult.Set(leaderboard);
-
-
         }
     }
 
@@ -50,7 +43,6 @@ public class LeaderboardManager : MonoBehaviour
         else
         {
             leaderboardHandle = param.m_hSteamLeaderboard;
-
             leaderboardScoresDownloadedResult = CallResult<LeaderboardScoresDownloaded_t>.Create(OnDownloadEntries);
 
             var handle = SteamUserStats.DownloadLeaderboardEntries(leaderboardHandle, ELeaderboardDataRequest.k_ELeaderboardDataRequestFriends, 0, 99);
@@ -68,10 +60,8 @@ public class LeaderboardManager : MonoBehaviour
         else
         {
             leaderboardScoresDownloaded = param;
-
             leaderboardScores = param.m_hSteamLeaderboardEntries;
             ShowGlobalLeaderboard();
-
         }
     }
 
@@ -94,12 +84,13 @@ public class LeaderboardManager : MonoBehaviour
                 }
 
                 playerCard.InitializeInformation(leaderboardEntry.m_nGlobalRank.ToString(), username, leaderboardEntry.m_nScore.ToString());
-            } else
+            }
+            else
             {
                 Debug.Log("this failed");
             }
         }
 
-        
+
     }
 }
