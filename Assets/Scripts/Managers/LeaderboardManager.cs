@@ -1,10 +1,14 @@
 using Steamworks;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class LeaderboardManager : MonoBehaviour
 {
     [SerializeField] private Transform playerCardPrefab;
     [SerializeField] private Transform contentArea;
+    [SerializeField] private Button toggleLeaderboardButton;
+    [SerializeField] private TMP_Text toggleLeaderboardButtonText;
+    [SerializeField] private TMP_Text labelText;
 
     private CallResult<LeaderboardFindResult_t> leaderboardResult;
     private CallResult<LeaderboardScoresDownloaded_t> leaderboardScoresDownloadedResult;
@@ -16,6 +20,9 @@ public class LeaderboardManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        if (contentArea.childCount > 0) return;
+
+
         if (SteamManager.Initialized)
         {
             var leaderboard = SteamUserStats.FindLeaderboard("Ball Blitz Highscore");
@@ -23,14 +30,6 @@ public class LeaderboardManager : MonoBehaviour
             leaderboardResult = CallResult<LeaderboardFindResult_t>.Create(OnFindLeaderboard);
 
             leaderboardResult.Set(leaderboard);
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(leaderboardScoresDownloaded.m_cEntryCount);
         }
     }
 
@@ -45,8 +44,7 @@ public class LeaderboardManager : MonoBehaviour
             leaderboardHandle = param.m_hSteamLeaderboard;
             leaderboardScoresDownloadedResult = CallResult<LeaderboardScoresDownloaded_t>.Create(OnDownloadEntries);
 
-            var handle = SteamUserStats.DownloadLeaderboardEntries(leaderboardHandle, ELeaderboardDataRequest.k_ELeaderboardDataRequestFriends, 0, 99);
-
+            var handle = SteamUserStats.DownloadLeaderboardEntries(leaderboardHandle, ELeaderboardDataRequest.k_ELeaderboardDataRequestGlobal, 0, 99);
             leaderboardScoresDownloadedResult.Set(handle);
         }
 
