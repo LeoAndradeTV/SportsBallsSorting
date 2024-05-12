@@ -47,7 +47,7 @@ public class BallCombineManager : MonoBehaviour
                 return;
             }
 
-            Ball ball = Instantiate(ballsToCombine[0].GetNextBall(), combinePosition, Quaternion.identity);
+            Ball ball = Instantiate(ballsToCombine[0].GetNextBall(), combinePosition - (Vector3.up * combinePosition.y/3) , Quaternion.identity);
             ball.SetHasCollided();
             PlayCombineEffect(ball.GetEffect(), combinePosition, ball);
             Vector3 screenCombinePosition = Camera.main.WorldToScreenPoint(combinePosition);
