@@ -4,7 +4,9 @@ using UnityEngine.UI;
 using TMPro;
 public class LeaderboardManager : MonoBehaviour
 {
+#if UNITY_STANDALONE
     [SerializeField] private Transform playerCardPrefab;
+    [SerializeField] private Transform myPlayerCard;
     [SerializeField] private Transform contentArea;
     [SerializeField] private Button toggleLeaderboardButton;
     [SerializeField] private TMP_Text toggleLeaderboardButtonText;
@@ -78,6 +80,7 @@ public class LeaderboardManager : MonoBehaviour
 
                 if (leaderboardEntry.m_steamIDUser == SteamUser.GetSteamID())
                 {
+                    myPlayerCard.GetComponent<PlayerCard>().InitializeInformation(leaderboardEntry.m_nGlobalRank.ToString(), username, leaderboardEntry.m_nScore.ToString());
                     playerCard.SetMyUsernameColor();
                 }
 
@@ -91,4 +94,5 @@ public class LeaderboardManager : MonoBehaviour
 
 
     }
+#endif
 }

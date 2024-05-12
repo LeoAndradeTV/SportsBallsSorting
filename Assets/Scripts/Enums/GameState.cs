@@ -6,5 +6,6 @@ public enum SceneTypes
 {
     MainMenu,
     GameScene,
-    MobileGameScene
+    MobileGameScene,
+    MobileScene
 }

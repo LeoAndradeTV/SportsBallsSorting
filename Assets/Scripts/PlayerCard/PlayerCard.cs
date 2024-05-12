@@ -25,8 +25,8 @@ public class PlayerCard : MonoBehaviour
 
     public void SetMyUsernameColor()
     {
-        rank.color = Color.yellow;
-        playerName.color = Color.yellow;
-        playerScore.color = Color.yellow;
+        rank.color = Color.red;
+        playerName.color = Color.red;
+        playerScore.color = Color.red;
     }
 }

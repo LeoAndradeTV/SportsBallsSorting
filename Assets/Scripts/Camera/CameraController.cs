@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,11 @@ public class CameraController : MonoBehaviour
             Debug.Log("Can Move Camera!");
         }
 #endif
+    }
+
+    private bool TouchedBox(Touch touch)
+    {
+         return touch.position.x < 1280 && touch.position.x > 640;
     }
 
     private void OnDisable()

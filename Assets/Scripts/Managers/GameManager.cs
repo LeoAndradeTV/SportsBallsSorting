@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         CurrentState = GameState.Playing;
         SceneManager.LoadScene(SceneTypes.GameScene.ToString());
 #if UNITY_IOS
-    SceneManager.LoadScene(SceneTypes.MobileGameScene.ToString());
+    SceneManager.LoadScene(SceneTypes.MobileScene.ToString());
 #endif
     }
 
@@ -127,7 +127,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+#if UNITY_STANDALONE
         ScoreManager.Instance.UploadToLeaderboard();
+#endif
         CurrentState = GameState.Paused;
         Time.timeScale = 0;
         OnGameOver?.Invoke();

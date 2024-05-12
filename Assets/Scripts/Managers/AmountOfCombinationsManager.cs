@@ -17,7 +17,7 @@ public class AmountOfCombinationsManager : MonoBehaviour
     {
         BallCombineManager.Instance.OnBallCombined += Instance_OnBallCombined;
     }
-
+    
     private void Instance_OnBallCombined(object sender, BallCombineManager.BallToCombineEventArgs e)
     {
         Ball ball = e.ballToCombine.GetNextBall();
@@ -30,15 +30,16 @@ public class AmountOfCombinationsManager : MonoBehaviour
         {
             amountOfBallsCombined[ballData] = 1;
         }
-
+#if UNITY_STANDALONE
         if (SteamManager.Initialized)
         {
             SetCombinationValueToServer(ball);
             TriggerFirstBallAchievement(ball);
         }
+#endif
 
     }
-
+#if UNITY_STANDALONE
     private void SetCombinationValueToServer(Ball ball)
     {
         BallType ballType = ball.GetBallData().ballType;
@@ -145,6 +146,7 @@ public class AmountOfCombinationsManager : MonoBehaviour
         }
 
     }
+#endif
 
 
 }

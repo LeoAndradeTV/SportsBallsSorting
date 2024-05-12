@@ -15,9 +15,10 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private int score;
     private int highScore;
-
+#if UNITY_STANDALONE
     private CallResult<LeaderboardFindResult_t> leaderboardResult;
     SteamLeaderboard_t leaderboardHandle;
+#endif
 
     public int HighScore
     {
@@ -43,6 +44,7 @@ public class ScoreManager : MonoBehaviour
             }
         }
     }
+#if UNITY_STANDALONE
 
     private void OnEnable()
     {
@@ -68,6 +70,7 @@ public class ScoreManager : MonoBehaviour
         }
 
     }
+#endif
 
     private void Start()
     {
@@ -95,39 +98,51 @@ public class ScoreManager : MonoBehaviour
         Score += e.ballToCombine.GetBallPoints();
     }
 
+
     public void SaveHighScore()
     {
+#if UNITY_STANDALONE
         if (!SteamManager.Initialized) { return; }
 
         // Update the local high score if the current score is higher
 
         SteamUserStats.SetStat("HIGHSCORE", Score);
         SteamUserStats.StoreStats();
+#endif
 
     }
 
     public void UploadToLeaderboard()
     {
+#if UNITY_STANDALONE
+
         if (!SteamManager.Initialized) { return; }
 
         SteamUserStats.UploadLeaderboardScore(leaderboardHandle, ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodForceUpdate, LoadHighScore(), new int[0], 0);
+#endif
     }
 
     public int LoadHighScore()
     {
+#if UNITY_STANDALONE
+
         if (!SteamManager.Initialized) { return 0; }
 
         SteamUserStats.GetStat("HIGHSCORE", out int highscore);
         HighScore = highscore;
-        return highscore;
+#endif
+        return highScore;
     }
 
     // For Debuggin Only
     private void ResetMyHighscore()
     {
+#if UNITY_STANDALONE
+
         if (!SteamManager.Initialized) { return; }
 
         SteamUserStats.SetStat("HIGHSCORE", 0);
         SteamUserStats.StoreStats();
+#endif
     }
 }

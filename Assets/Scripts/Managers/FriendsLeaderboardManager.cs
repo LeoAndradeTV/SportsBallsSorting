@@ -6,6 +6,7 @@ using TMPro;
 public class FriendsLeaderboardManager : MonoBehaviour
 {
     [SerializeField] private Transform playerCardPrefab;
+    [SerializeField] private Transform myPlayerCard;
     [SerializeField] private Transform contentArea;
     [SerializeField] private Button toggleLeaderboardButton;
     [SerializeField] private TMP_Text toggleLeaderboardButtonText;
@@ -78,6 +79,7 @@ public class FriendsLeaderboardManager : MonoBehaviour
 
                 if (leaderboardEntry.m_steamIDUser == SteamUser.GetSteamID())
                 {
+                    myPlayerCard.GetComponent<PlayerCard>().InitializeInformation(leaderboardEntry.m_nGlobalRank.ToString(), username, leaderboardEntry.m_nScore.ToString());
                     playerCard.SetMyUsernameColor();
                 }
 
@@ -88,7 +90,5 @@ public class FriendsLeaderboardManager : MonoBehaviour
                 Debug.Log("this failed");
             }
         }
-
-
     }
 }
