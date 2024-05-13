@@ -155,4 +155,14 @@ public class Ball : MonoBehaviour
     {
         return new Vector3(Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f));
     }
+
+    public Vector3 GetCurrentBallRadius()
+    {
+        if (GetComponent<SphereCollider>() == null)
+        {
+            return Vector3.zero;
+        }
+        float radius = GetComponent<SphereCollider>().radius * transform.localScale.y;
+        return new Vector3(0, radius, 0);
+    }
 }

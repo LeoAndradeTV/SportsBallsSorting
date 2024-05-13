@@ -47,7 +47,9 @@ public class BallCombineManager : MonoBehaviour
                 return;
             }
 
-            Ball ball = Instantiate(ballsToCombine[0].GetNextBall(), combinePosition - (Vector3.up * combinePosition.y/3) , Quaternion.identity);
+            float pushDownFactor = combinePosition.y - ballsToCombine[0].GetNextBall().GetCurrentBallRadius().y < ballsToCombine[0].GetNextBall().GetCurrentBallRadius().y ? 0 : ballsToCombine[0].GetNextBall().GetCurrentBallRadius().y;
+
+            Ball ball = Instantiate(ballsToCombine[0].GetNextBall(), combinePosition - (Vector3.up * pushDownFactor), Quaternion.identity);
             ball.SetHasCollided();
             PlayCombineEffect(ball.GetEffect(), combinePosition, ball);
             Vector3 screenCombinePosition = Camera.main.WorldToScreenPoint(combinePosition);
